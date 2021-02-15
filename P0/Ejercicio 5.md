@@ -46,3 +46,11 @@ El código se puede poner en línea `Afectan    los es  pacios  ` `print(c)`
 ## Imágenes
  ### Locales
 ![](Ejercicio2-img2.jpg)
+### Externas
+![](https://d33wubrfki0l68.cloudfront.net/5af5e6be4b9c2782c7e61008a077e316a591bd4b/4f5ec/images/allthethings.jpg)
+
+## Enlaces
+### Internos
+Probando --> [enlace](#Enlaces)
+### Externo
+*Mi github* [link](https://github.com/llago2017)
