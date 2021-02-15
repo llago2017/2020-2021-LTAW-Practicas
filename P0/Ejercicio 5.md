@@ -54,3 +54,13 @@ El código se puede poner en línea `Afectan    los es  pacios  ` `print(c)`
 Probando --> [enlace](#Enlaces)
 ### Externo
 *Mi github* [link](https://github.com/llago2017)
+
+## Citas
+> No lo intentes. Hazlo, o no lo hagas, pero no lo intentes
+
+## Tablas
+|         | Col 1 | Col 2| Col 3| Col4 |
+|---------|-------|------|------|------|
+|  Fila 1 |   Descentralizada   |   2  |   3  |  4   |
+|  Fila 2 |   2   |   4  |   enlace a github [link](https://github.com/llago2017)  |  8   |
+|  Fila 3 |   3   |   **Probando negrita**  |   9  |  
