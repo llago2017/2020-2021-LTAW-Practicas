@@ -1,0 +1,18 @@
+.div {
+    grid-gap: 10px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+  .logo {
+    -webkit-box-shadow: 10px 10px 19px -7px rgba(112,112,112,1);
+    -moz-box-shadow: 10px 10px 19px -7px rgba(112,112,112,1);
+    box-shadow: 10px 10px 19px -7px rgba(112,112,112,1);
+    margin: 25px;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
