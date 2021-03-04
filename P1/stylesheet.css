@@ -1,18 +1,16 @@
-.div {
-    grid-gap: 10px;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
 
+  img{
+    display: block;
+    max-width: 100%;
+    height: auto;
   }
 
-  .logo {
-    -webkit-box-shadow: 10px 10px 19px -7px rgba(112,112,112,1);
-    -moz-box-shadow: 10px 10px 19px -7px rgba(112,112,112,1);
-    box-shadow: 10px 10px 19px -7px rgba(112,112,112,1);
-    margin: 25px;
-    
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+  div{
+    background-color: burlywood;
+    padding: 5px;
+  }
+
+  input {
+    background:rgba(0,0,0,0.2);
+    border-color: chocolate;
+  }
