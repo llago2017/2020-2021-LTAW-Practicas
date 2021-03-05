@@ -1,16 +1,57 @@
 
-  img{
+  body {
+    background: url(background.jpg);
+  }
+  
+  .header{
     display: block;
     max-width: 100%;
     height: auto;
   }
 
-  div{
-    background-color: burlywood;
-    padding: 5px;
+  #navigation {
+    width: 100%;
+    height: 55px;
+    position: fixed;
+    background: linear-gradient(#4D3414, #221506);
+    top: 0px;
   }
 
+  #bag{
+    height: 40px;
+    width: auto;
+    position: absolute;
+    margin-top: -10px;
+  }
+
+    #bag:hover{
+      cursor: pointer;
+    }
+  .navitems {
+    color: white;
+    padding-top: 17px;
+    padding-right: 10em;
+    float: right;
+    font-family: tahoma;
+    overflow: cover;
+    margin: 0 auto;
+    
+  }
   input {
-    background:rgba(0,0,0,0.2);
-    border-color: chocolate;
+    color: white;
+    border-right: none;
+    border-top: hidden;
+    border-left: hidden;
+    border-bottom: 5px solid rgba(191,154,30,0.6);
+    border-radius: 0px 0px 22px 22px;
+    outline: none;
+    position: relative;
+    font-family: inherit;
+    text-decoration: none;
+    background-color: transparent;
+    transition: color 0.2s ease-in;
+  }
+
+  input:hover {
+			background-color: rgba(0,0,0,0.75);
   }
