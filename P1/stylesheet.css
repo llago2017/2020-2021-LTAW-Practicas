@@ -71,3 +71,15 @@
     background: url(white.jpg);
     height: 100%;
   }
+
+  span {
+    font-family: 'Medula One', cursive;
+    letter-spacing: 0.073125em;
+    font-size: 3.75rem;
+    color: #B99F65;
+    text-align: center;
+  }
+
+  div {
+    text-align: center;
+  }
