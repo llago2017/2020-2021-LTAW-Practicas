@@ -1,6 +1,9 @@
-
+  *{
+    box-sizing: border-box;
+  }
   body {
     background: url(background.jpg);
+    margin: 0px;
   }
   
   .header{
@@ -16,7 +19,6 @@
     width: 100%;
     height: 55px;
     background: linear-gradient(#4D3414, #221506);
-    position: relative;
   }
 
   #bag{
@@ -24,16 +26,17 @@
     width: auto;
     position: absolute;
     margin-top: -10px;
-    margin-left: 20px;
+    margin-left: 50px;
   }
 
     #bag:hover{
       cursor: pointer;
     }
+
   .navitems {
     color: white;
     padding-top: 17px;
-    padding-right: 10em;
+    padding-right: 110px;
     float: right;
     font-family: tahoma;
     overflow: cover;
@@ -57,4 +60,14 @@
 
   input:hover {
 			background-color: rgba(0,0,0,0.75);
+  }
+
+  .divider {
+    margin-top: -50px;
+    width: 100%;
+  }
+
+  section {
+    background: url(white.jpg);
+    height: 100%;
   }
