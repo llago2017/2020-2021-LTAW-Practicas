@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tienda SYSTEM "Ej.dtd">
+
+<!-- Usando el lenguaje-->
+<tienda>
+    <producto> 
+        <nombre>Alhambra II</nombre>   
+        <descripcion>Placa con FPGA ice40HX8K</descripcion> 
+        <stock>3</stock>
+    </producto>
+
+    <!-- Si no tiene los elementos obligatorios no es correcto-->
+    <producto>
+        <nombre>Icestick</nombre>
+        <stock>10</stock>
+    </producto>
+</tienda>
