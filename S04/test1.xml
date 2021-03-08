@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pirulo>
+
+<!-- Doctype es opcional en xml para definir la gramática-->
 <!-- Esto es un comentario en una línea-->
 <!-- Varias
     lineas
     y otra más-->
 
 <pirulo>
-    <megunlo attr1="mi_atributo">
+    <mengulo attr1="mi_atributo">
         Un mengulo
-    </megunlo>
+    </mengulo>
 
     <mengulo>
         Otro mengulo??
