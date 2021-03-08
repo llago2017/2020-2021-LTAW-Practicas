@@ -2,7 +2,7 @@
     box-sizing: border-box;
   }
   body {
-    background: url(background.jpg);
+    background: url(img/background.jpg);
     margin: 0px;
   }
   
@@ -67,7 +67,7 @@
   }
 
   section {
-    background: url(white.jpg);
+    background: url(img/white.jpg);
     height: 100%;
   }
 
