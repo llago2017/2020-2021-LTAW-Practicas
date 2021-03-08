@@ -5,10 +5,11 @@
 Un lenguaje que solo tiene la marca raíz
 y dentro de ella solo puedo meter cadenas de texto-->
 <!DOCTYPE tienda [
-    <!ELEMENT tienda (#PCDATA)>
+    <!ELEMENT tienda (producto)>
+    <!ELEMENT producto (#PCDATA)>
 ]>
 
 <!-- Usando el lenguaje-->
 <tienda>
-    Esta es mi tienda
+    <producto> Esto es un producto </producto>
 </tienda>
