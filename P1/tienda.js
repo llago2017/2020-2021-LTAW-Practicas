@@ -1,4 +1,5 @@
 const http = require('http');
+const fs = require('fs');
 
 //-- Definir el puerto a utilizar
 const PUERTO = 9000;
@@ -9,15 +10,16 @@ const server = http.createServer((req, res) => {
   //-- Indicamos que se ha recibido una petición
   console.log("Petición recibida!");
 
-  //-- Cabecera que indica el tipo de datos del
-  //-- cuerpo de la respuesta: Texto plano
-  res.setHeader('Content-Type', 'text/plain');
+  fs.readFile('main.html', function(err, data) {
 
-  //-- Mensaje del cuerpo
-  res.write("Soy el Happy server!!\n");
+      let mime = "text/html"
+  
+    //-- Generar el mensaje de respuesta
+      res.writeHead(200, {'Content-Type': mime});
+      res.write(data);
+      res.end();
+    });
 
-  //-- Terminar la respuesta y enviarla
-  res.end();
 });
 
 //-- Activar el servidor: ¡Que empiece la fiesta!
