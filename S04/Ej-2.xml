@@ -19,4 +19,11 @@ y dentro de ella solo puedo meter cadenas de texto-->
         <descripcion>Placa con FPGA ice40HX8K</descripcion> 
         <stock>3</stock>
     </producto>
+
+    <!-- Si no tiene los  productos no es correcto-->
+    <producto>
+        <nombre>Icestick</nombre>
+        <descripcion>Placa con FPGA ice40H1K</descripcion>
+        <stock>10</stock>
+    </producto>
 </tienda>
