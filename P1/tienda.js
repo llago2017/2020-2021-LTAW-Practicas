@@ -22,20 +22,30 @@ const PUERTO = 9000;
   function getExtension(filename) {
     return filename.split('.').pop();
 }
-
+function getFile(filename) {
+  return filename.split('/').pop();
+}
 
 //-- Crear el servidor
 const server = http.createServer((req, res) => {
     
   //-- Indicamos que se ha recibido una petición
   console.log("Petición recibida!");
+
+  // Obtengo archivo
+  var file = getFile(req.url);
+  console.log(file);
   
   // Obtengo tipo de archivo
   var rute = getExtension(req.url);
   console.log(rute)
   print_info_req(req);
 
-  fs.readFile('main.html', function(err, data) {
+  if (file == "") {
+    file = "main.html";
+  }
+
+  fs.readFile(file, function(err, data) {
     
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
