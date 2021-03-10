@@ -1,13 +1,12 @@
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
-let c_type = "";
-const rute = "";
+var rute = "";
 
 //-- Definir el puerto a utilizar
 const PUERTO = 9000;
 
-  //-- Imprimir informacion sobre el mensaje de solicitud
+ //-- Imprimir informacion sobre el mensaje de solicitud
   function print_info_req(req) {
 
     console.log("");
@@ -15,34 +14,32 @@ const PUERTO = 9000;
     console.log("====================");
     console.log("Método: " + req.method);
     console.log("Recurso: " + req.url);
-    console.log("Ruta: "+ req.headers['host'])
+    console.log("Version: " + req.httpVersion)
   }
-  
   // Función para obtener tipo de archivo
   function getExtension(filename) {
     return filename.split('.').pop();
-}
-function getFile(filename) {
-  return filename.split('/').pop();
-}
+  }
 
 //-- Crear el servidor
 const server = http.createServer((req, res) => {
-    
+  // Obtengo URL
+  let dir = url.parse(req.url);
+
   //-- Indicamos que se ha recibido una petición
   console.log("Petición recibida!");
 
-  // Obtengo archivo
-  var file = getFile(req.url);
-  console.log(file);
-  
   // Obtengo tipo de archivo
-  var rute = getExtension(req.url);
-  console.log(rute)
+  rute = getExtension(req.url);
   print_info_req(req);
 
-  if (file == "") {
+  if (dir.pathname == "/") {
     file = "main.html";
+  }else {
+    var direccion = dir.pathname;
+    var len = direccion.length;
+    var r_slice = direccion.slice(1,len);
+    file = r_slice;
   }
 
   fs.readFile(file, function(err, data) {
@@ -52,18 +49,15 @@ const server = http.createServer((req, res) => {
       return res.end("404 Not Found");
     }
     
+    let c_type = "text/html"
 
-    switch (rute){
-      case "css":
-        c_type = "text/css";
-        break;
-      default:
-        c_type = "text/html"
-  }
-
-    //Tipo de imágenes
-    if (rute == 'png' || rute == 'jpg' || rute == 'svg') {
+    //Tipos de archivo y c_type
+    if (rute == 'png' || rute == 'jpg') {
       c_type = "image/" + rute;
+    } else if (rute == "css") {
+      c_type = "text/css";
+    } else if (rute == "svg"){
+      c_type = "image/svg+xml"
     }
 
     //-- Generar el mensaje de respuesta
