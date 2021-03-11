@@ -104,6 +104,10 @@
 	  margin: 10px;
     margin-top: 40px;
 	  position: relative;
+    
+    border: silver 10px solid;
+    border-image-source: url(img/border.png);
+    border-image-slice: 27 fill;
   }
 
   a {
