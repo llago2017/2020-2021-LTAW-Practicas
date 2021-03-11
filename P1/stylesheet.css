@@ -91,3 +91,21 @@
   #product {
     margin-bottom: -15px;
   }
+
+  .productos{
+    padding: 20px;
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .articulo {
+    width: 250px;
+	  margin: 10px;
+    margin-top: 40px;
+	  position: relative;
+  }
+
+  a {
+    display: block;
+  }
