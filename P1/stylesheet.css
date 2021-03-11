@@ -104,10 +104,17 @@
 	  margin: 10px;
     margin-top: 40px;
 	  position: relative;
-    
+
     border: silver 10px solid;
     border-image-source: url(img/border.png);
     border-image-slice: 27 fill;
+  }
+
+  .articulo:hover{
+    background-color: rgba(0,0,0,0.75);
+    border-radius: 25px;
+    border: #B99F65 3px dashed;
+    transition: 0.2s;
   }
 
   a {
