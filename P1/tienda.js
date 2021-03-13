@@ -70,4 +70,4 @@ const server = http.createServer((req, res) => {
 
 //-- Activar el servidor: ¡Que empiece la fiesta!
 server.listen(PUERTO);
-console.log("Ejemplo 2. Happy Server listo!. Escuchando en puerto: " + PUERTO);
+console.log("Server listo!. Escuchando en puerto: " + PUERTO);
