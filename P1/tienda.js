@@ -6,20 +6,20 @@ var rute = "";
 //-- Definir el puerto a utilizar
 const PUERTO = 9000;
 
- //-- Imprimir informacion sobre el mensaje de solicitud
-  function print_info_req(req) {
+//-- Imprimir informacion sobre el mensaje de solicitud
+function print_info_req(req) {
+  console.log("");
+  console.log("Mensaje de solicitud");
+  console.log("====================");
+  console.log("Método: " + req.method);
+  console.log("Recurso: " + req.url);
+  console.log("Version: " + req.httpVersion)
+}
 
-    console.log("");
-    console.log("Mensaje de solicitud");
-    console.log("====================");
-    console.log("Método: " + req.method);
-    console.log("Recurso: " + req.url);
-    console.log("Version: " + req.httpVersion)
-  }
-  // Función para obtener tipo de archivo
-  function getExtension(filename) {
-    return filename.split('.').pop();
-  }
+// Función para obtener tipo de archivo
+function getExtension(filename) {
+  return filename.split('.').pop();
+}
 
 //-- Crear el servidor
 const server = http.createServer((req, res) => {
@@ -33,39 +33,36 @@ const server = http.createServer((req, res) => {
   rute = getExtension(req.url);
   print_info_req(req);
 
-function dir_document() {
-   // Dirección para cargar
-   if (dir.pathname == "/") {
+  function dir_document() {
+    // Dirección para cargar
+    if (dir.pathname == "/") {
     file = "main.html";
-  }else {
-    var direccion = dir.pathname;
-    var len = direccion.length;
-    var r_slice = direccion.slice(1,len);
-    file = r_slice;
+    } else {
+      var direccion = dir.pathname;
+      var len = direccion.length;
+      var r_slice = direccion.slice(1,len);
+      file = r_slice;
+    }
   }
-}
 
   dir_document();
-  // Compruebo si existe la dirección
+
+  // Compruebo si existe la dirección si es una página
   if (rute == 'html') {
-    if(fs.existsSync(dir.pathname) && rute == "html"){
+    if(fs.existsSync(dir.pathname)){
+      // Si existe se manda a esa dirección
       dir_document();
       
-     } else if (!fs.existsSync(dir.pathname)){
-       file = "html/error.html"
-     }
+   } else {
+      // Si no existe aparece la página de error
+      file = "html/error.html"
+    }
   }
-  
-  
 
-  readPage(file);
-
-  function readPage(file) {
   fs.readFile(file, function(err, data) {
     
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
-      file = "html/error.html"
       return res.end("404 Not Found", 'utf-8');
     }
     
@@ -85,7 +82,6 @@ function dir_document() {
       res.write(data);
       res.end();
     });
-  }
 });
 
 //-- Activar el servidor: ¡Que empiece la fiesta!
