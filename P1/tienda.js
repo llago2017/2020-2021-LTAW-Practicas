@@ -33,7 +33,9 @@ const server = http.createServer((req, res) => {
   rute = getExtension(req.url);
   print_info_req(req);
 
-  if (dir.pathname == "/") {
+function dir_document() {
+   // Dirección para cargar
+   if (dir.pathname == "/") {
     file = "main.html";
   }else {
     var direccion = dir.pathname;
@@ -41,13 +43,30 @@ const server = http.createServer((req, res) => {
     var r_slice = direccion.slice(1,len);
     file = r_slice;
   }
+}
 
+  dir_document();
+  // Compruebo si existe la dirección
+  if (rute == 'html') {
+    if(fs.existsSync(dir.pathname) && rute == "html"){
+      dir_document();
+      
+     } else if (!fs.existsSync(dir.pathname)){
+       file = "html/error.html"
+     }
+  }
+  
+  
+
+  readPage(file);
+
+  function readPage(file) {
   fs.readFile(file, function(err, data) {
     
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
-      file = "html/error.html"      
-      return res.end("404 Not Found");
+      file = "html/error.html"
+      return res.end("404 Not Found", 'utf-8');
     }
     
     let c_type = "text/html"
@@ -66,7 +85,7 @@ const server = http.createServer((req, res) => {
       res.write(data);
       res.end();
     });
-
+  }
 });
 
 //-- Activar el servidor: ¡Que empiece la fiesta!
