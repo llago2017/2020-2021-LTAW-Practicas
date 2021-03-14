@@ -46,6 +46,7 @@ const server = http.createServer((req, res) => {
     
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
+      file = "html/error.html"      
       return res.end("404 Not Found");
     }
     
