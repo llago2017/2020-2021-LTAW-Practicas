@@ -51,12 +51,8 @@ const server = http.createServer((req, res) => {
   if (rute == 'html') {
     if(fs.existsSync(dir.pathname)){
       // Si existe se manda a esa dirección
-      dir_document();
-      
-   } else {
-      // Si no existe aparece la página de error
-      file = "html/error.html"
-    }
+      dir_document(); 
+   } 
   }
 
   fs.readFile(file, function(err, data) {
