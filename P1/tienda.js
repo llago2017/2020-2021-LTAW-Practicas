@@ -32,6 +32,7 @@ const server = http.createServer((req, res) => {
   // Obtengo tipo de archivo
   rute = getExtension(req.url);
   print_info_req(req);
+  console.log(rute);
 
   function dir_document() {
     // Dirección para cargar
@@ -65,12 +66,24 @@ const server = http.createServer((req, res) => {
     let c_type = "text/html"
 
     //Tipos de archivo y c_type
-    if (rute == 'png' || rute == 'jpg') {
-      c_type = "image/" + rute;
-    } else if (rute == "css") {
-      c_type = "text/css";
-    } else if (rute == "svg"){
-      c_type = "image/svg+xml"
+
+    switch (rute) {
+      case "png":
+        c_type = "image/" + rute;
+        break;
+      case "jpg":
+        c_type = "image/" + rute;
+        break;
+      case "css":
+        c_type = "text/" + rute;
+        break;
+      case "js":
+        c_type = "text/" + rute;
+      case "ico":
+        c_type = "image/ico"
+      default:
+        c_type = "text/html"
+        break;
     }
 
     //-- Generar el mensaje de respuesta
