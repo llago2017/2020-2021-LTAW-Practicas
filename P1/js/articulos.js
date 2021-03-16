@@ -5,7 +5,10 @@ const ctx = canvas.getContext('2d');
 
 var img = [];
 
-for (var i = 0; i < imgs.length; i++) {
+function main() {
+  console.log("Ejecutando js")
+
+  for (var i = 0; i < imgs.length; i++) {
     imgs[i].onclick = (ev) => {
         console.log(ev.target);
         img = ev.target;
@@ -17,10 +20,11 @@ for (var i = 0; i < imgs.length; i++) {
         // Quito el borde de la imagen no seleccionada
         if (imgs[0].style.border = '4px solid grey') {
             imgs[0].style.border = '0px solid grey'
-            imgs[1].style.border = '0px solid grey'
         }
       img.style.border = '4px solid grey'
     }
     
     console.log("Imagen lista...");
   }
+}
+
