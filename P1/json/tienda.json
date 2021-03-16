@@ -1,0 +1,26 @@
+{
+    "usuarios": [{
+                    "nombre" : "lorena",
+                    "Real": null,
+                    "email": null
+        
+                },
+                {
+                    "nombre" : "root",
+                    "Real": "ddd"
+                }],
+
+    "productos": [{
+                    "nombre": null,
+                    "descripcion": null
+                   },
+                   {
+                    "nombre": null,
+                    "descripcion": null
+                    }, 
+                    {
+                    "nombre": null,
+                    "descripcion": null
+                    }],
+    "pedidos": []
+}

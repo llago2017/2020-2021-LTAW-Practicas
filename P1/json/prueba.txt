@@ -1,0 +1,5 @@
+# Acceder al primer usuario --> 
+tienda["usuarios"][0]["nombre"]
+
+# Número de usuarios -->
+tienda["usuarios"].length
