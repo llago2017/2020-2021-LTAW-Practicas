@@ -22,5 +22,10 @@
                     "nombre": null,
                     "descripcion": null
                     }],
-    "pedidos": []
+    "pedidos": [{
+        "username": null,
+        "direccion de envio": null,
+        "numero de tarjeta": null,
+        "lista": []
+    }]
 }
