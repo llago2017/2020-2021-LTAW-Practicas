@@ -1,0 +1,17 @@
+<!DOCTYPE universidad SYSTEM "universidad.dtd">
+
+<universidad>
+    <escuela>
+        <nombre> "Etsi Telecomunicación</nombre>
+        <grado>
+            <nombre>Ingenieria en sistemas audiovisuales y multimedia</nombre>
+            <asignatura>Ltaw</asignatura>
+            <asignatura>CSAAI</asignatura>
+            <asignatura> ASA II</asignatura>
+        </grado>
+        <grado>
+            <nombre>Ingeniería en robótica software</nombre>
+            <asignatura> AC </asignatura>
+        </grado>
+    </escuela>
+</universidad>
