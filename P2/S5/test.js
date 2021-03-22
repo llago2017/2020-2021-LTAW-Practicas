@@ -21,6 +21,7 @@ console.log("Primer usuario: " + tienda["usuarios"][0]["nombre"]);
 tienda["usuarios"][0]["nombre"] = "cambio";
 
 console.log("Primer usuario cambiado: " + tienda["usuarios"][0]["nombre"]);
+console.log("Primer usuario cambiado (otra forma): " + tienda.usuarios[0].nombre);
 
 //-- Guardo la modifiación
 
