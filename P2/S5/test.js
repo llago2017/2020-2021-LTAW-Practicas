@@ -21,3 +21,13 @@ console.log("Primer usuario: " + tienda["usuarios"][0]["nombre"]);
 tienda["usuarios"][0]["nombre"] = "cambio";
 
 console.log("Primer usuario cambiado: " + tienda["usuarios"][0]["nombre"]);
+
+//-- Guardo la modifiación
+
+const JSON_OUT = "test_salida.json"
+
+let json_salida = JSON.stringify(tienda);
+
+fs.writeFileSync(JSON_OUT,json_salida);
+
+console.log("Tienda modificada en el fichero: " + JSON_OUT);
