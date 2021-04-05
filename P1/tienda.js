@@ -78,9 +78,11 @@ const server = http.createServer((req, res) => {
         c_type = "text/" + rute;
         break;
       case "js":
-        c_type = "text/" + rute;
+        c_type = "text/javascript";
+        break;
       case "ico":
         c_type = "image/ico"
+        break;
       default:
         c_type = "text/html"
         break;
