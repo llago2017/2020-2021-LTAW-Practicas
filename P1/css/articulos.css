@@ -15,9 +15,8 @@ img, canvas{
     box-shadow: 0px 0px 51px -8px rgba(0,0,0,0.75);
 }
 
-canvas{
-    width: 180px;
-    height: 250px;
+img {
+    width: 50px;
 }
 
 .center{
@@ -31,3 +30,10 @@ canvas{
     display: block;
     margin: 50px;
 }
+
+#articulo {
+    border: silver 10px solid;
+    border-image-source: url(../img/border.png);
+    border-image-slice: 27 fill;
+    background-color: rgba(0,0,0,0);
+  }
