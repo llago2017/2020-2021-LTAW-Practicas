@@ -36,4 +36,9 @@ img {
     border-image-source: url(../img/border.png);
     border-image-slice: 27 fill;
     background-color: rgba(0,0,0,0);
-  }
+}
+
+
+figure {
+    display: inline-block;
+}

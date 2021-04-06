@@ -18,8 +18,13 @@ function main() {
         ctx.drawImage(img, 0,0);
         console.log('click')
         // Quito el borde de la imagen no seleccionada
-        if (imgs[0].style.border = '4px solid grey') {
-            imgs[0].style.border = '0px solid grey'
+        for (var i = 0; i < imgs.length; i++) {
+          if (imgs[i].style.border = 'rgba(0,0,0,0.75)') {
+            imgs[i].style.backgroundColor = 'rgba(0,0,0,0)'
+            imgs[i].style.border = 'silver 10px solid'
+            imgs[i].style.borderImageSlice = '27 fill'
+            imgs[i].style.borderImageSource = 'url(../img/border.png)'
+          }
         }
       img.style.backgroundColor = 'rgba(0,0,0,0.75)'
       img.style.border = 'silver 10px solid'
