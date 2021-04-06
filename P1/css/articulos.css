@@ -23,6 +23,12 @@ img {
     text-align:center;
 }
 
+.descriptor {
+    display: inline;
+    float: right;
+    padding-right: 25%;
+}
+
 .imagenes{
     width:auto;
     height:auto;
