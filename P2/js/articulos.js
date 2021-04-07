@@ -2,7 +2,8 @@
 const canvas = document.getElementById('canvas');
 let imgs =  document.getElementsByClassName('images');
 const ctx = canvas.getContext('2d');
-
+const description = document.getElementById('descriptor');
+let description_txt = ["Corazones extra", "Otorga resistencia frente a la electrizidad", "Otorga un poco de resistencia frente al fuego", "Te permite desplazarte más rápido, tanto al correr, al trepar y nadar", "Rellena el indicador de resistencia"]
 var img = [];
 
 function main() {
@@ -30,6 +31,8 @@ function main() {
       img.style.border = 'silver 10px solid'
       img.style.borderImageSlice = '27 fill'
       img.style.borderImageSource = 'url(../img/border.png)'
+
+      description.innerText += "\nholi";
     }
     
     console.log("Imagen lista...");
