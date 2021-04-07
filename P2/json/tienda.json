@@ -11,8 +11,8 @@
                 }],
 
     "productos": [{
-                    "nombre": null,
-                    "descripcion": null
+                    "nombre": "Pocion de salud",
+                    "descripcion": "Corazones extra"
                    },
                    {
                     "nombre": null,
