@@ -1,0 +1,50 @@
+body {
+    background-image: url(../img/background.jpg);
+
+    font-family: 'Medula One', cursive;
+    letter-spacing: 0.073125em;
+    font-size: 15px;
+    color: #B99F65;
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+img, canvas{
+    -webkit-box-shadow: 0px 0px 51px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 51px -8px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 51px -8px rgba(0,0,0,0.75);
+}
+
+img {
+    width: 50px;
+}
+
+.center{
+    text-align:center;
+}
+
+.descriptor {
+    display: inline;
+    float: right;
+    padding-right: 25%;
+}
+
+.imagenes{
+    width:auto;
+    height:auto;
+    text-align:center;
+    display: block;
+    margin: 50px;
+}
+
+#articulo {
+    border: silver 10px solid;
+    border-image-source: url(../img/border.png);
+    border-image-slice: 27 fill;
+    background-color: rgba(0,0,0,0);
+}
+
+
+figure {
+    display: inline-block;
+}

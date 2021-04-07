@@ -72,7 +72,7 @@
   }
 
   section {
-    background: url(../P1/img/white.jpg);
+    background: url(../img/white.jpg);
     height: 100%;
   }
 
@@ -113,7 +113,7 @@
 	  position: relative;
 
     border: silver 30px solid;
-    border-image-source: url(../P1/img/border.png);
+    border-image-source: url(../img/border.png);
     border-image-slice: 27 fill;
   }
 
@@ -121,7 +121,7 @@
     background-color: rgba(0,0,0,0.75);
     border-radius: 10%;
     border: silver 20px solid;
-    border-image-source: url(../P1/img/border.png);
+    border-image-source: url(../img/border.png);
     border-image-slice: 27 fill;
     transition: 0.2s;
   }
