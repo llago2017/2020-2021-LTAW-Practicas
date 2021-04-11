@@ -21,6 +21,12 @@ function getExtension(filename) {
   return filename.split('.').pop();
 }
 
+//-- HTML de la página de respuesta
+const RESPUESTA = fs.readFileSync('html/form_resp.html', 'utf-8');
+
+//-- HTML página de error
+const ERROR = fs.readFileSync('html/error.html', 'utf-8');
+
 //-- Crear el servidor
 const server = http.createServer((req, res) => {
   // Obtengo URL
@@ -56,11 +62,33 @@ const server = http.createServer((req, res) => {
    } 
   }
 
+
+  //-- Construir el objeto url con la url de la solicitud
+  const myURL = new URL(req.url, 'http://' + req.headers['host']);      
+
+  if (myURL.pathname == '/procesar') {
+    content_type = "text/html";
+
+    file = "html/form_resp.html"
+}
+
+//-- Si hay datos en el cuerpo, se imprimen
+req.on('data', (cuerpo) => {
+
+  //-- Los datos del cuerpo son caracteres
+  req.setEncoding('utf8');
+  console.log(`Cuerpo (${cuerpo.length} bytes)`)
+  console.log(` ${cuerpo}`);
+});
+
+
+
   fs.readFile(file, function(err, data) {
     
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end("404 Not Found", 'utf-8');
+      res.end("404 Not Found", 'utf-8');
+      return data = ERROR;
     }
     
     let c_type = "text/html"
