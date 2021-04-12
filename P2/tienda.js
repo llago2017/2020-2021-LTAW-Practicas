@@ -90,9 +90,11 @@ req.on('data', (cuerpo) => {
   fs.readFile(file, function(err, data) {
     
     if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      res.end("404 Not Found", 'utf-8');
-      return data = ERROR;
+      res.setHeader('Content-Type','text/html');
+      res.statusCode = 404;
+      res.write(ERROR);
+      res.end();
+      return;
     }
 
     //Tipos de archivo y c_type
