@@ -12,7 +12,8 @@
 
     "productos": [{
                     "nombre": "Pocion de salud",
-                    "descripcion": "Corazones extra"
+                    "descripcion": "Corazones extra",
+                    "stock": "3"
                    },
                    {
                     "nombre": null,
