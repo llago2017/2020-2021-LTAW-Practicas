@@ -79,6 +79,13 @@ req.on('data', (cuerpo) => {
   req.setEncoding('utf8');
   console.log(`Cuerpo (${cuerpo.length} bytes)`)
   console.log(` ${cuerpo}`);
+
+  const myURL = new URL('http://' + req.headers['host'] + '?' + cuerpo);
+  console.log(myURL);
+
+  //-- Leer los parámetros
+  let nombre = myURL.searchParams.get('nombre');
+  console.log("Nombre: " + nombre);
 });
 
 
