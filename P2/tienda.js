@@ -68,9 +68,13 @@ const server = http.createServer((req, res) => {
 
   if (myURL.pathname == '/procesar') {
     content_type = "text/html";
-
     file = "html/form_resp.html"
-}
+  }
+
+  if (myURL.pathname == '/productos') {
+    c_type = "application/json";
+    file = 'json/productos.json';
+  }
 
 //-- Si hay datos en el cuerpo, se imprimen
 req.on('data', (cuerpo) => {
@@ -93,12 +97,12 @@ req.on('data', (cuerpo) => {
   fs.readFile(file, function(err, data) {
     
     if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      res.end("404 Not Found", 'utf-8');
-      return data = ERROR;
+      res.setHeader('Content-Type','text/html');
+      res.statusCode = 404;
+      res.write(ERROR);
+      res.end();
+      return;
     }
-    
-    let c_type = "text/html"
 
     //Tipos de archivo y c_type
 
@@ -118,7 +122,10 @@ req.on('data', (cuerpo) => {
       case "ico":
         c_type = "image/ico"
         break;
-      default:
+      case "/":
+        c_type = "text/html"
+        break;
+      case "html":
         c_type = "text/html"
         break;
     }

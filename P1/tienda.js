@@ -6,6 +6,9 @@ var rute = "";
 //-- Definir el puerto a utilizar
 const PUERTO = 9000;
 
+//-- HTML página de error
+const ERROR = fs.readFileSync('html/error.html', 'utf-8');
+
 //-- Imprimir informacion sobre el mensaje de solicitud
 function print_info_req(req) {
   console.log("");
@@ -59,8 +62,13 @@ const server = http.createServer((req, res) => {
   fs.readFile(file, function(err, data) {
     
     if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end("404 Not Found", 'utf-8');
+      if (err) {
+      res.setHeader('Content-Type','text/html');
+      res.statusCode = 404;
+      res.write(ERROR);
+      res.end();
+      return;
+    }
     }
     
     let c_type = "text/html"
