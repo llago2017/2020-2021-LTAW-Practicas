@@ -27,6 +27,13 @@ const RESPUESTA = fs.readFileSync('html/form_resp.html', 'utf-8');
 //-- HTML página de error
 const ERROR = fs.readFileSync('html/error.html', 'utf-8');
 
+//-- Leo base de datos
+const FICHERO_JSON = "json/tienda.json"
+const tienda_json = fs.readFileSync(FICHERO_JSON);
+
+//-- Creo la estructura
+const tienda = JSON.parse(tienda_json);
+
 //-- Crear el servidor
 const server = http.createServer((req, res) => {
   // Obtengo URL
@@ -85,11 +92,21 @@ const server = http.createServer((req, res) => {
   console.log(` ${cuerpo}`);
 
   const myURL = new URL('http://' + req.headers['host'] + '?' + cuerpo);
-  console.log(myURL);
 
   //-- Leer los parámetros
   let nombre = myURL.searchParams.get('usuario');
   console.log("Nombre: " + nombre);
+
+  for (i=0; i<tienda["usuarios"].length; i++){
+    console.log("Tienda JSON: " + tienda["usuarios"][i]["nombre"]);
+    var json_user = tienda["usuarios"][i]["nombre"];
+
+    if (json_user == nombre) {
+      console.log("usuario existe");
+      break;
+    } else
+      console.log("Usuario no registrado");
+    }
 });
 
 
