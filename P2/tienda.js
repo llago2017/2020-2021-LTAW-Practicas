@@ -67,7 +67,7 @@ const server = http.createServer((req, res) => {
   const myURL = new URL(req.url, 'http://' + req.headers['host']);      
 
   if (myURL.pathname == '/procesar') {
-    content_type = "text/html";
+    c_type = "text/html";
     file = "html/form_resp.html"
   }
 
@@ -76,8 +76,8 @@ const server = http.createServer((req, res) => {
     file = 'json/productos.json';
   }
 
-//-- Si hay datos en el cuerpo, se imprimen
-req.on('data', (cuerpo) => {
+  //-- Si hay datos en el cuerpo, se imprimen
+  req.on('data', (cuerpo) => {
 
   //-- Los datos del cuerpo son caracteres
   req.setEncoding('utf8');
@@ -88,7 +88,7 @@ req.on('data', (cuerpo) => {
   console.log(myURL);
 
   //-- Leer los parámetros
-  let nombre = myURL.searchParams.get('nombre');
+  let nombre = myURL.searchParams.get('usuario');
   console.log("Nombre: " + nombre);
 });
 
