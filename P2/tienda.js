@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const url = require('url');
 var rute = "";
-
+var user = "";
 //-- Definir el puerto a utilizar
 const PUERTO = 9000;
 
@@ -20,9 +20,9 @@ function print_info_req(req) {
 function getExtension(filename) {
   return filename.split('.').pop();
 }
-
+const FICHERO_RESP = 'html/form_resp.html';
 //-- HTML de la página de respuesta
-const RESPUESTA = fs.readFileSync('html/form_resp.html', 'utf-8');
+const RESPUESTA = fs.readFileSync(FICHERO_RESP, 'utf-8');
 
 //-- HTML página de error
 const ERROR = fs.readFileSync('html/error.html', 'utf-8');
@@ -75,7 +75,7 @@ const server = http.createServer((req, res) => {
 
   if (myURL.pathname == '/procesar') {
     c_type = "text/html";
-    file = "html/form_resp.html"
+    file = FICHERO_RESP;
   }
 
   if (myURL.pathname == '/productos') {
@@ -103,16 +103,15 @@ const server = http.createServer((req, res) => {
 
     if (json_user == nombre) {
       console.log("usuario existe");
+      user = nombre;
       break;
     } else
       console.log("Usuario no registrado");
     }
 });
 
-
-
   fs.readFile(file, function(err, data) {
-    
+    console.log(file)
     if (err) {
       res.setHeader('Content-Type','text/html');
       res.statusCode = 404;
@@ -120,6 +119,18 @@ const server = http.createServer((req, res) => {
       res.end();
       return;
     }
+
+    if (file == FICHERO_RESP) {
+      c_type = "text/html";
+
+      content = RESPUESTA.replace("PRUEBA", user);
+
+      res.setHeader('Content-Type', c_type);
+      res.write(content);
+      res.end();
+      return;
+    }
+    
 
     //Tipos de archivo y c_type
 
@@ -152,7 +163,8 @@ const server = http.createServer((req, res) => {
       res.write(data);
       res.end();
     });
-});
+  });
+  
 
 //-- Activar el servidor: ¡Que empiece la fiesta!
 server.listen(PUERTO);
