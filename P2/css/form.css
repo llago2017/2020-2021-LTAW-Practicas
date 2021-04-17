@@ -3,8 +3,68 @@ body {
 
     font-family: 'Medula One', cursive;
     letter-spacing: 0.073125em;
-    font-size: 15px;
+    font-size: 18px;
     color: #B99F65;
     text-align: center;
     margin-bottom: 70px;
+}
+
+.title {
+    font-size: 25px;
+}
+
+hr {
+    border: 1px solid rgba(185, 159, 101, .5);
+    margin-bottom: 10%;
+}
+
+.form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    padding: 25px;
+    display: inline-block;
+    
+    background-image: url(../img/white.jpg);
+    border-radius: 10px;
+    border-width: 5x;
+    
+    -webkit-box-shadow: 10px 10px 19px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 19px 0px rgba(0,0,0,1);   
+    box-shadow: 10px 10px 19px 0px rgba(0,0,0,1);
+}
+
+.button {
+    border: silver 10px solid;
+    border-image-source: url(../img/border.png);
+    border-image-slice: 27 fill;
+    
+    font-family: 'Medula One', cursive;
+    color: rgba(99, 79, 15, 0.6);
+}
+
+.button:hover{
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(0,0,0,0.1);
+    transition: 0.2s;
+}
+
+input {
+    border-right: none;
+    border-top: hidden;
+    border-left: hidden;
+    border-bottom: 2px solid rgba(99, 79, 15, 0.6);
+    border-radius: 0px 0px 22px 22px;
+    outline: none;
+    position: relative;
+    font-family: inherit;
+    text-decoration: none;
+    background-color: transparent;
+    transition: color 0.2s ease-in;
+    margin-bottom: 5%;
+}
+input:hover, input:focus{
+    background-color: rgba(0,0,0,0.3);
+    transition: color 0.2s ease-in;
 }
