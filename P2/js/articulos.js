@@ -31,8 +31,13 @@ function main() {
       img.style.border = 'silver 10px solid'
       img.style.borderImageSlice = '27 fill'
       img.style.borderImageSource = 'url(../img/border.png)'
-
-      description.innerText += "\nholi";
+      
+      var text = img.alt;
+      console.log(text)
+      if (text == "") {
+        text = "Sin descripcion"
+      }
+      description.innerText = "\n" + text;
     }
     
     console.log("Imagen lista...");
