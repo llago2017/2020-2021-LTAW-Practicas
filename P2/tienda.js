@@ -3,6 +3,7 @@ const fs = require('fs');
 const url = require('url');
 var rute = "";
 var user = "";
+var registered = false;
 //-- Definir el puerto a utilizar
 const PUERTO = 9000;
 
@@ -104,6 +105,7 @@ const server = http.createServer((req, res) => {
     if (json_user == nombre) {
       console.log("usuario existe");
       user = nombre;
+      registered = true;
       break;
     } else
       console.log("Usuario no registrado");
@@ -123,11 +125,19 @@ const server = http.createServer((req, res) => {
     if (file == FICHERO_RESP) {
       c_type = "text/html";
 
-      content = RESPUESTA.replace("PRUEBA", user);
+      if (registered) {
+        content = RESPUESTA.replace("PRUEBA", user);
+        content = content.replace("REGISTRO", "Usuario válido");
+      } else {
+        content = RESPUESTA.replace("PRUEBA", "Usuario no registrado");
+        content = content.replace("REGISTRO", "Error");
+      }
 
       res.setHeader('Content-Type', c_type);
       res.write(content);
       res.end();
+      // Reinicio valor de usuario registrado
+      registered = false;
       return;
     }
     
