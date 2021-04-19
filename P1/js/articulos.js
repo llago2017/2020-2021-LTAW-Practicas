@@ -2,7 +2,7 @@
 const canvas = document.getElementById('canvas');
 let imgs =  document.getElementsByClassName('images');
 const ctx = canvas.getContext('2d');
-
+const description = document.getElementById('descriptor');
 var img = [];
 
 function main() {
@@ -30,8 +30,16 @@ function main() {
       img.style.border = 'silver 10px solid'
       img.style.borderImageSlice = '27 fill'
       img.style.borderImageSource = 'url(../img/border.png)'
+      
+      var text = img.alt;
+      console.log(text)
+      if (text == "") {
+        text = "Sin descripcion"
+      }
+      description.innerText = "\n" + text;
     }
     
     console.log("Imagen lista...");
   }
+
 }
