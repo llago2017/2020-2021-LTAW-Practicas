@@ -3,10 +3,15 @@ body {
 
     font-family: 'Medula One', cursive;
     letter-spacing: 0.073125em;
-    font-size: 15px;
+    font-size: 20px;
     color: #B99F65;
     text-align: center;
     margin-bottom: 70px;
+}
+
+hr {
+    border: 1px solid rgba(185, 159, 101, 1);
+    margin: 10px;
 }
 
 img, canvas{
@@ -24,9 +29,19 @@ img {
 }
 
 .descriptor {
+    background-image: url(../img/white.jpg);
+    border-radius: 20px;
     display: inline;
     float: right;
-    padding-right: 25%;
+    padding: 15px;
+
+    margin-right: 30%;
+    width: 350px;
+    height: 150px;
+
+    -webkit-box-shadow: 10px 10px 19px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 19px 0px rgba(0,0,0,1);   
+    box-shadow: 10px 10px 19px 0px rgba(0,0,0,1);
 }
 
 .imagenes{
