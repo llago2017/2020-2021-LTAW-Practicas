@@ -13,7 +13,8 @@ function main() {
         console.log(ev.target.height);
         img = ev.target;
         img.style.border = '0px'
-
+        canvas.height = 250;
+        canvas.width = 180;
         ctx.drawImage(img, 0,0);
         console.log('click')
         // Quito el borde de la imagen no seleccionada
