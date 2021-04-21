@@ -7,43 +7,50 @@
     <title>Tienda online - Pociones</title>
   </head>
   <body onload="main()" >
-      PRUEBA
       <div class="center">
         <div class="imagenes">
-          <p>Artículo seleccionado</p>
-           <canvas id="canvas"></canvas>
-           <div class="descriptor" > Descripción 
+          <div class="seleccionado">
+            <span>Artículo seleccionado</span>
+            <hr>
+            <span id="name"></span>
+          </div>
+          
+           <canvas id="canvas" width="180" height="250"></canvas>
+           <div class="descriptor" > Descripción
+             <hr>
              <span id="descriptor"> </span>
            </div>
 
+          <section>
           <div class="imagenes">
             <figure>
-              <img src="../img/Pocion_salud2.png" class="images" id="articulo" alt="Corazones extra">
-              <figcaption> Poción de salud</figcaption>
+              <img src="../img/Pocion_salud2.png" class="images" id="articulo" alt="Corazones extra" name="Poción de Salud" >
+              <figcaption > Poción de salud</figcaption>
             </figure>
 
             <figure>
-              <img src="../img/Pocion_electrizante.png" class="images" id="articulo" alt="Otorga resistencia frente a la electrizidad" >
+              <img src="../img/Pocion_electrizante.png" class="images" id="articulo" alt="Otorga resistencia frente a la electrizidad" name="Poción electrizante">
               <figcaption>Poción electrizante</figcaption>
             </figure>
 
             <figure>
-              <img src="../img/Pocion_ignifugo.png" class="images" id="articulo" alt="Otorga resistencia frente al fuego" >
+              <img src="../img/Pocion_ignifugo.png" class="images" id="articulo" alt="Otorga resistencia frente al fuego" name="Poción ignífugo" >
               <figcaption>Poción ignífugo</figcaption>
             </figure>
             
 
             <figure>
-              <img src="../img/pocion_raudo.png" class="images" id="articulo" alt="Te permite desplazarte más rápido">
+              <img src="../img/pocion_raudo.png" class="images" id="articulo" alt="Te permite desplazarte más rápido" name="Poción raudo">
               <figcaption>Poción rauda</figcaption>
             </figure>
 
             <figure>
-              <img src="../img/Pocion_vigorizante.png" class="images" id="articulo" alt="Rellena el indicador de resistencia">
+              <img src="../img/Pocion_vigorizante.png" class="images" id="articulo" alt="Rellena el indicador de resistencia" name="Poción vigorizante">
               <figcaption>Poción vigorizante</figcaption>
             </figure>
 
           </div>
+        </section>
         </div>
   </body>
 </html>
