@@ -3,7 +3,7 @@ const canvas = document.getElementById('canvas');
 let imgs =  document.getElementsByClassName('images');
 const ctx = canvas.getContext('2d');
 const description = document.getElementById('descriptor');
-let description_txt = ["Corazones extra", "Otorga resistencia frente a la electrizidad", "Otorga un poco de resistencia frente al fuego", "Te permite desplazarte más rápido, tanto al correr, al trepar y nadar", "Rellena el indicador de resistencia"]
+const art_name = document.getElementById('name')
 var img = [];
 
 function main() {
@@ -34,10 +34,15 @@ function main() {
       
       var text = img.alt;
       console.log(text)
+      console.log(img.name)
+
       if (text == "") {
         text = "Sin descripcion"
+      } else {
+        description.innerText = "\n" + text;
       }
-      description.innerText = "\n" + text;
+      art_name.innerText = img.name;
+
     }
     
     console.log("Imagen lista...");
