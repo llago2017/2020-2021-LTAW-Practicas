@@ -9,41 +9,46 @@
   <body onload="main()" >
       <div class="center">
         <div class="imagenes">
-          <p>Artículo seleccionado</p>           
+          <div class="seleccionado">
+            <span>Artículo seleccionado</span>
+            <hr>
+            <span id="name"></span>
+          </div>           
           <canvas id="canvas" width="180" height="250"></canvas>
            <div class="descriptor" > Descripción 
              <hr>
              <span id="descriptor"> </span>
           </div>
-
+          <section>
           <div class="imagenes">
             <figure>
-              <img src="../img/maestra.png" class="images" id="articulo" alt="La legendaria espada destructora del Mal.">
+              <img src="../img/maestra.png" class="images" id="articulo" alt="La legendaria espada destructora del Mal." name="Espada Maestra">
               <figcaption> Espada Maestra</figcaption>
             </figure>
 
             <figure>
-              <img src="../img/lizal.png" class="images" id="articulo" alt="Se puede emplear tanto en combates cuerpo a cuerpo como para arrojarla al enemigo desde lejos. ">
+              <img src="../img/lizal.png" class="images" id="articulo" alt="Se puede emplear tanto en combates cuerpo a cuerpo como para arrojarla al enemigo desde lejos." name="Bumeran Lizal">
               <figcaption>Bumeran lizal</figcaption>
             </figure>
 
             <figure>
-              <img src="../img/real.png" class="images" id="articulo" alt="Lanza que la familia real de Hyrule reservaba a quienes destacaban por su pericia con esta arma">
+              <img src="../img/real.png" class="images" id="articulo" alt="Lanza que la familia real de Hyrule reservaba a quienes destacaban por su pericia con esta arma" name="Lanza Real">
               <figcaption>Lanza real</figcaption>
             </figure>
             
 
             <figure>
-              <img src="../img/moblin.png" class="images" id="articulo" alt="Garrote sencillo que emplean los moblin.">
+              <img src="../img/moblin.png" class="images" id="articulo" alt="Garrote sencillo que emplean los moblin." name="Garrote Moblin">
               <figcaption>Garrote Moblin</figcaption>
             </figure>
 
             <figure>
-              <img src="../img/gerudo.png" class="images" id="articulo" alt="Arma corriente que las guerreras gerudo usan para defenderse ">
+              <img src="../img/gerudo.png" class="images" id="articulo" alt="Arma corriente que las guerreras gerudo usan para defenderse" name="Daga Gerudo">
               <figcaption>Daga Gerudo</figcaption>
             </figure>
 
           </div>
+        </section>
         </div>
   </body>
 </html>
