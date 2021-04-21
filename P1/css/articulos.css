@@ -9,10 +9,21 @@ body {
     margin-bottom: 70px;
 }
 
+p {
+    float: left;
+}
+
 hr {
     border: 1px solid rgba(185, 159, 101, 1);
     margin: 10px;
 }
+
+section {
+    background: url(../img/white.jpg);
+    height: 100%s;
+    padding: 15px;
+    border-radius: 10px;
+  }
 
 img, canvas{
     -webkit-box-shadow: 0px 0px 51px -8px rgba(0,0,0,0.75);
@@ -28,8 +39,12 @@ img {
     text-align:center;
 }
 
+.seleccionado {
+    width: 200px;
+}
+
 .descriptor {
-    background-image: url(../img/white.jpg);
+    background-image: url(../img/blue.jpg);
     border-radius: 20px;
     display: inline;
     float: right;
@@ -63,3 +78,11 @@ img {
 figure {
     display: inline-block;
 }
+
+.divider {
+    width: 100%;
+}
+
+#product {
+    margin-bottom: -35px;
+  }

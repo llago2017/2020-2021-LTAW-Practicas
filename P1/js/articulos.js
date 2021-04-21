@@ -3,6 +3,7 @@ const canvas = document.getElementById('canvas');
 let imgs =  document.getElementsByClassName('images');
 const ctx = canvas.getContext('2d');
 const description = document.getElementById('descriptor');
+const art_name = document.getElementById('name')
 var img = [];
 
 function main() {
@@ -33,10 +34,15 @@ function main() {
       
       var text = img.alt;
       console.log(text)
+      console.log(img.name)
+
       if (text == "") {
         text = "Sin descripcion"
+      } else {
+        description.innerText = "\n" + text;
       }
-      description.innerText = "\n" + text;
+      art_name.innerText = img.name;
+
     }
     
     console.log("Imagen lista...");
