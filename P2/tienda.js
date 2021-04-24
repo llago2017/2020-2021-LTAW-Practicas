@@ -6,6 +6,7 @@ var user = "";
 var registered = false;
 //-- Variable para guardar el usuario
 let user_activo;
+let item_list;
 //-- Definir el puerto a utilizar
 const PUERTO = 9000;
 
@@ -72,6 +73,39 @@ function get_user(req) {
   }
 }
 
+function get_items(req) {
+
+  //-- Leer la Cookie recibida
+  const cookie = req.headers.cookie;
+
+  //-- Hay cookie
+  if (cookie) {
+    //-- Obtener un array con todos los pares nombre-valor
+    let pares = cookie.split(";");
+
+    //-- Recorrer todos los pares nombre-valor
+    pares.forEach((element, index) => {
+
+      //-- Obtener los nombres y valores por separado
+      let [nombre, valor] = element.split('=');
+
+      //-- Leer el usuario
+      //-- Solo si el nombre es 'user'
+      if (nombre.trim() === 'carrito') {
+        console.log("Hay objetos")
+        item_list = valor;
+      }
+    });
+
+    //-- Si la variable user no está asignada
+    //-- se devuelve null
+    return item_list || null;
+  } else {
+      item_list = null;
+  }
+
+}
+
 //-- Crear el servidor
 const server = http.createServer((req, res) => {
   // Obtengo URL
@@ -124,8 +158,34 @@ const server = http.createServer((req, res) => {
   //-- Obtener le usuario que ha accedido
   //-- null si no se ha reconocido
   let user = get_user(req);
-
+  let items = get_items(req);
   console.log("User: " + user);
+  console.log("Objetos: " + items);
+
+  if (items) {
+    console.log("Nombre del producto: " + items);
+
+    for (i=0; i<tienda["productos"].length; i++){
+      console.log("Tienda JSON: " + tienda["productos"][i]["nombre"]);
+      var json_item = tienda["productos"][i]["nombre"];
+
+      if ("PociÃ³n de Salud" == items) {
+        console.log("Producto existe");
+        var stock = tienda["productos"][i]["stock"]
+        console.log("Stock: " + stock);
+
+        //-- Guardo la modifiación
+
+        let json_salida = JSON.stringify(tienda);
+
+        fs.writeFileSync(FICHERO_JSON,json_salida);
+
+        break;
+      } else
+        console.log("No stock");
+    }
+  }
+
 
   //-- Acceso al recurso raiz
   
