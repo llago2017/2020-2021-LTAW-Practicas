@@ -126,6 +126,9 @@ const server = http.createServer((req, res) => {
       c_type = "text/html";
 
       if (registered) {
+
+        //-- Asignar la cookie de usuario Chuck
+        res.setHeader('Set-Cookie', "user="+user);
         content = RESPUESTA.replace("PRUEBA", user);
         content = content.replace("REGISTRO", "Usuario válido");
       } else {
