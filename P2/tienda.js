@@ -4,6 +4,8 @@ const url = require('url');
 var rute = "";
 var user = "";
 var registered = false;
+//-- Variable para guardar el usuario
+let user_activo;
 //-- Definir el puerto a utilizar
 const PUERTO = 9000;
 
@@ -28,12 +30,47 @@ const RESPUESTA = fs.readFileSync(FICHERO_RESP, 'utf-8');
 //-- HTML página de error
 const ERROR = fs.readFileSync('html/error.html', 'utf-8');
 
+//-- HTML principal
+const MAIN = fs.readFileSync('index.html', 'utf-8');
+
 //-- Leo base de datos
 const FICHERO_JSON = "json/tienda.json"
 const tienda_json = fs.readFileSync(FICHERO_JSON);
 
 //-- Creo la estructura
 const tienda = JSON.parse(tienda_json);
+
+function get_user(req) {
+
+  //-- Leer la Cookie recibida
+  const cookie = req.headers.cookie;
+
+  //-- Hay cookie
+  if (cookie) {
+    
+    //-- Obtener un array con todos los pares nombre-valor
+    let pares = cookie.split(";");
+
+    //-- Recorrer todos los pares nombre-valor
+    pares.forEach((element, index) => {
+
+      //-- Obtener los nombres y valores por separado
+      let [nombre, valor] = element.split('=');
+
+      //-- Leer el usuario
+      //-- Solo si el nombre es 'user'
+      if (nombre.trim() === 'user') {
+        user_activo = valor;
+      }
+    });
+
+    //-- Si la variable user no está asignada
+    //-- se devuelve null
+    return user_activo || null;
+  } else {
+      user_activo = null;
+  }
+}
 
 //-- Crear el servidor
 const server = http.createServer((req, res) => {
@@ -84,32 +121,40 @@ const server = http.createServer((req, res) => {
     file = 'json/productos.json';
   }
 
+  //-- Obtener le usuario que ha accedido
+  //-- null si no se ha reconocido
+  let user = get_user(req);
+
+  console.log("User: " + user);
+
+  //-- Acceso al recurso raiz
+  
   //-- Si hay datos en el cuerpo, se imprimen
   req.on('data', (cuerpo) => {
 
-  //-- Los datos del cuerpo son caracteres
-  req.setEncoding('utf8');
-  console.log(`Cuerpo (${cuerpo.length} bytes)`)
-  console.log(` ${cuerpo}`);
+    //-- Los datos del cuerpo son caracteres
+    req.setEncoding('utf8');
+    console.log(`Cuerpo (${cuerpo.length} bytes)`)
+    console.log(` ${cuerpo}`);
 
-  const myURL = new URL('http://' + req.headers['host'] + '?' + cuerpo);
+    const myURL = new URL('http://' + req.headers['host'] + '?' + cuerpo);
 
-  //-- Leer los parámetros
-  let nombre = myURL.searchParams.get('usuario');
-  console.log("Nombre: " + nombre);
+    //-- Leer los parámetros
+    let nombre = myURL.searchParams.get('usuario');
+    console.log("Nombre: " + nombre);
 
-  for (i=0; i<tienda["usuarios"].length; i++){
-    console.log("Tienda JSON: " + tienda["usuarios"][i]["nombre"]);
-    var json_user = tienda["usuarios"][i]["nombre"];
+    for (i=0; i<tienda["usuarios"].length; i++){
+      console.log("Tienda JSON: " + tienda["usuarios"][i]["nombre"]);
+      var json_user = tienda["usuarios"][i]["nombre"];
 
-    if (json_user == nombre) {
-      console.log("usuario existe");
-      user = nombre;
-      registered = true;
-      break;
-    } else
-      console.log("Usuario no registrado");
-    }
+      if (json_user == nombre) {
+        console.log("usuario existe");
+        user = nombre;
+        registered = true;
+        break;
+      } else
+        console.log("Usuario no registrado");
+      }
 });
 
   fs.readFile(file, function(err, data) {
@@ -127,7 +172,7 @@ const server = http.createServer((req, res) => {
 
       if (registered) {
 
-        //-- Asignar la cookie de usuario Chuck
+        //-- Asignar la cookie de usuario
         res.setHeader('Set-Cookie', "user="+user);
         content = RESPUESTA.replace("PRUEBA", user);
         content = content.replace("REGISTRO", "Usuario válido");
@@ -144,6 +189,26 @@ const server = http.createServer((req, res) => {
       return;
     }
     
+    if (myURL.pathname == '/') {
+      c_type = "text/html";
+      //--- Si la variable user está asignada
+      if (user_activo) {
+          //-- Añadir a la página el nombre del usuario
+          console.log("user: " + user_activo);
+          data = MAIN.replace("Login", user_activo);
+      } else {
+          //-- Mostrar el enlace a la página de login
+          console.log("No hay user")
+          data = MAIN.replace("HTML_EXTRA", `
+          <a href="login">Login</a>
+          `);
+      }
+  
+      res.setHeader('Content-Type', c_type);
+      res.write(data);
+      res.end();
+      return
+    }
 
     //Tipos de archivo y c_type
 
