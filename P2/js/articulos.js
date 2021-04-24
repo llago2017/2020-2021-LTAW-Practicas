@@ -6,6 +6,11 @@ const description = document.getElementById('descriptor');
 const art_name = document.getElementById('name')
 var img = [];
 
+function send_cookie(){
+  console.log('Añadiendo item al carrito!')
+  document.cookie = "carrito=objeto";
+}
+
 function main() {
   console.log("Ejecutando js")
 
