@@ -172,41 +172,6 @@ const server = http.createServer((req, res) => {
   console.log("User: " + user);
   console.log("Objetos: " + items);
 
-  if (items) {
-    //Leer de nuevo el json
-    const tienda_json = fs.readFileSync(FICHERO_JSON);
-    //-- Creo la estructura
-    const tienda = JSON.parse(tienda_json);
-
-    console.log("Nombre del producto: " + items);
-
-    for (i=0; i<tienda["productos"].length; i++){
-      console.log("Tienda JSON: " + tienda["productos"][i]["nombre"]);
-      var json_item = tienda["productos"][i]["nombre"];
-
-      if ("PociÃ³n de Salud" == items) {
-        console.log("Producto existe");
-        var stock = tienda["productos"][i]["stock"]
-        console.log("Stock: " + stock);
-        resta = stock - 1;
-        console.log(resta);
-
-        // Modificacion
-        tienda["productos"][i]["stock"] = resta;
-
-        //-- Guardo la modifiación
-
-        let json_salida = JSON.stringify(tienda);
-
-        fs.writeFileSync(FICHERO_JSON,json_salida);
-
-        break;
-      } else
-        console.log("No stock");
-    }
-  }
-
-
   //-- Acceso al recurso raiz
   
   //-- Si hay datos en el cuerpo, se imprimen
@@ -283,6 +248,13 @@ const server = http.createServer((req, res) => {
         // Lista
         if (items) {
           console.log("añadir objetos")
+          var item_array = items.split(":")
+          var print_item = ""
+          for (let i = 0; i < item_array.length; i++) {
+            print_item += item_array[i] + "<br>";
+          }
+          console.log("IMPRIME: " + print_item)
+          content = content.replace("HTML EXTRA",print_item);
         } else {
           
           console.log("La lista está vacía")
