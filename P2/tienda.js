@@ -152,7 +152,7 @@ const server = http.createServer((req, res) => {
 
   if (myURL.pathname == '/productos') {
     c_type = "application/json";
-    file = 'json/productos.json';
+    file = 'json/tienda.json';
   }
 
   //-- Obtener le usuario que ha accedido
@@ -163,6 +163,11 @@ const server = http.createServer((req, res) => {
   console.log("Objetos: " + items);
 
   if (items) {
+    //Leer de nuevo el json
+    const tienda_json = fs.readFileSync(FICHERO_JSON);
+    //-- Creo la estructura
+    const tienda = JSON.parse(tienda_json);
+
     console.log("Nombre del producto: " + items);
 
     for (i=0; i<tienda["productos"].length; i++){
@@ -173,6 +178,11 @@ const server = http.createServer((req, res) => {
         console.log("Producto existe");
         var stock = tienda["productos"][i]["stock"]
         console.log("Stock: " + stock);
+        resta = stock - 1;
+        console.log(resta);
+
+        // Modificacion
+        tienda["productos"][i]["stock"] = resta;
 
         //-- Guardo la modifiación
 
