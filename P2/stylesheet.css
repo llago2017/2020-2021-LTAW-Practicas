@@ -26,7 +26,7 @@
     width: auto;
     position: absolute;
     margin-top: -10px;
-    margin-left: 50px;
+    margin-left: 5px;
   }
 
     #bag:hover{
@@ -124,8 +124,4 @@
     border-image-source: url(../img/border.png);
     border-image-slice: 27 fill;
     transition: 0.2s;
-  }
-
-  a {
-    display: block;
   }

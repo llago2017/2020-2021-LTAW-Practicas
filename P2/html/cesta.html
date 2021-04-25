@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/form.css">
+    <title>Tienda Online - Formulario Pedido</title>
+  </head>
+  <body>
+  <div class="form">
+    <span class="title">Realizar pedido</span>
+    <hr>
+    <form action="/procesar" method="post">
+      Usuario:
+      <input type="text" name="usuario"/>
+      <p></p>
+      Direccion de envio:
+      <input type="text" name="direccion" />
+      <p></p>
+      Número de tarjeta:
+      <input type="text" name="tarjeta"/>
+      <p></p>
+      <input class="button" type="submit" value="Finalizar Pedido"/>
+  </form>
+  </div>
+    
+  </body>
+</html>
