@@ -25,9 +25,12 @@ function getExtension(filename) {
   return filename.split('.').pop();
 }
 const FICHERO_RESP = 'html/form_resp.html';
+const FICHERO_CESTA = 'html/cesta.html'
 const FICHERO_PEDIDO = 'html/pedido.html'
+
 //-- HTML de la página de respuesta
 const RESPUESTA = fs.readFileSync(FICHERO_RESP, 'utf-8');
+const CESTA = fs.readFileSync(FICHERO_CESTA, 'utf-8');
 
 //-- HTML página de error
 const ERROR = fs.readFileSync('html/error.html', 'utf-8');
@@ -269,6 +272,29 @@ const server = http.createServer((req, res) => {
       // Reinicio valor de usuario registrado
       registered = false;
       return;
+    }
+
+    if (file == FICHERO_CESTA) {
+      c_type = "text/html"
+      if (user_activo) {
+        // Usuario
+        console.log('Hay un usuario en la sesión')
+        content = CESTA.replace("Inicie sesión", user);
+        // Lista
+        if (items) {
+          console.log("añadir objetos")
+        } else {
+          
+          console.log("La lista está vacía")
+          content = content.replace("HTML EXTRA", "Lista vacía");
+        }
+
+        res.setHeader('Content-Type', c_type);
+        res.write(content);
+        res.end();
+        return;
+      }
+
     }
     
     if (myURL.pathname == '/') {
