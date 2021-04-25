@@ -25,6 +25,7 @@ function getExtension(filename) {
   return filename.split('.').pop();
 }
 const FICHERO_RESP = 'html/form_resp.html';
+const FICHERO_PEDIDO = 'html/pedido.html'
 //-- HTML de la página de respuesta
 const RESPUESTA = fs.readFileSync(FICHERO_RESP, 'utf-8');
 
@@ -150,6 +151,12 @@ const server = http.createServer((req, res) => {
     file = FICHERO_RESP;
   }
 
+  if (myURL.pathname == '/pedido') {
+    c_type = "text/html"
+    file = FICHERO_PEDIDO;
+    
+  }
+
   if (myURL.pathname == '/productos') {
     c_type = "application/json";
     file = 'json/tienda.json';
@@ -222,10 +229,15 @@ const server = http.createServer((req, res) => {
         user = nombre;
         registered = true;
         break;
-      } else
-        console.log("Usuario no registrado");
-      }
-});
+      } 
+    }
+
+    let direccion = myURL.searchParams.get('direccion');
+    if (direccion) {
+      console.log("Es un pedido")
+    }
+
+  });
 
   fs.readFile(file, function(err, data) {
     console.log(file)
