@@ -251,14 +251,13 @@ const server = http.createServer((req, res) => {
           var item_array = items.split(":")
           var print_item = ""
           for (let i = 0; i < item_array.length; i++) {
-            print_item += item_array[i] + "<br>";
+            print_item += item_array[i] + numero + "<br>";
           }
           console.log("IMPRIME: " + print_item)
-          content = content.replace("HTML EXTRA",print_item);
-        } else {
-          
+          content = content.replace("Lista vacía",print_item);
+        } else {          
           console.log("La lista está vacía")
-          content = content.replace("HTML EXTRA", "Lista vacía");
+          content = content.replace("Lista vacía", "Lista vacía");
         }
 
         res.setHeader('Content-Type', c_type);
