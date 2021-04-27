@@ -4,6 +4,9 @@ const http = require('http');
 const express = require('express');
 const colors = require('colors');
 
+// Control de número de usuarios
+var users = 0;
+
 const PUERTO = 8080;
 
 //-- Crear una nueva aplciacion web
@@ -33,10 +36,12 @@ app.use(express.static('public'));
 io.on('connect', (socket) => {
   
   console.log('** NUEVA CONEXIÓN **'.yellow);
+  users += 1;
 
   //-- Evento de desconexión
   socket.on('disconnect', function(){
     console.log('** CONEXIÓN TERMINADA **'.yellow);
+    users -= 1;
   });  
 
   //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
@@ -65,10 +70,13 @@ io.on('connect', (socket) => {
         var dd = d.getDate();
         msg = 'Fecha: ' + dd + '/' + mm + '/' + yy;
         io.to(socketId).emit('message', msg);
-    } else {
+    } else if (msg == '/list') {
+      msg = 'Actualmente hay ' + users + " usuarios conectados."
+      io.to(socketId).emit('message', msg);
+    } 
+    else {
       //-- Reenviarlo a todos los clientes conectados
       io.send(msg);
-
     }
 
     
