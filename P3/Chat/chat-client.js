@@ -43,11 +43,18 @@ io.on('connect', (socket) => {
   socket.on("message", (msg)=> {
     console.log("Mensaje Recibido!: " + msg.blue);
 
-    if (msg=='help') {
+    if (msg=='/help') {
+        console.log("Mensaje de ayuda".red)
         msg = '/help: Devuelve la lista con todos los comandos' + "<br>" +
         '/list : Devvuelve el numero de usuarios conectados' + "<br" +
         '/hello : Devuelve el saludo del servidor' + "<br>" +
         '/date : Devulve la fecha'
+
+        io.emit('new_message',msg)
+    } else if (msg == '/hello'){
+      console.log("Mensaje de saludo".red)
+      msg = '¡HOLI!';
+      io.emit('new_message', msg);
     }
 
     //-- Reenviarlo a todos los clientes conectados
