@@ -54,10 +54,17 @@ io.on('connect', (socket) => {
 
         io.to(socketId).emit('message', msg);
     } else if (msg == '/hello'){
-      console.log("Mensaje de saludo".red)
-      msg = '¡HOLI!';
-      console.log(socketId);
-      io.to(socketId).emit('message', msg);
+        console.log("Mensaje de saludo".red)
+        msg = '¡HOLI!';
+        console.log(socketId);
+        io.to(socketId).emit('message', msg);
+    }  else if (msg == '/date'){
+        var d = new Date();
+        var yy = d.getFullYear();
+        var mm = d.getMonth();
+        var dd = d.getDate();
+        msg = 'Fecha: ' + dd + '/' + mm + '/' + yy;
+        io.to(socketId).emit('message', msg);
     } else {
       //-- Reenviarlo a todos los clientes conectados
       io.send(msg);
