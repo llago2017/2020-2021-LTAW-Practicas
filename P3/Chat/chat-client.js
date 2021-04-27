@@ -42,6 +42,8 @@ io.on('connect', (socket) => {
   //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
   socket.on("message", (msg)=> {
     console.log("Mensaje Recibido!: " + msg.blue);
+    var socketId = socket.id;
+    console.log("socket id: " + socketId.green);
 
     if (msg=='/help') {
         console.log("Mensaje de ayuda".red)
@@ -50,15 +52,19 @@ io.on('connect', (socket) => {
         '/hello : Devuelve el saludo del servidor' + "<br>" +
         '/date : Devulve la fecha'
 
-        io.emit('new_message',msg)
+        io.to(socketId).emit('message', msg);
     } else if (msg == '/hello'){
       console.log("Mensaje de saludo".red)
       msg = '¡HOLI!';
-      io.emit('new_message', msg);
+      console.log(socketId);
+      io.to(socketId).emit('message', msg);
+    } else {
+      //-- Reenviarlo a todos los clientes conectados
+      io.send(msg);
+
     }
 
-    //-- Reenviarlo a todos los clientes conectados
-    io.send(msg);
+    
   });
 
 });
