@@ -25,7 +25,12 @@ function getExtension(filename) {
   return filename.split('.').pop();
 }
 const FICHERO_RESP = 'html/form_resp.html';
-const FICHERO_CESTA = 'html/cesta.html'
+const FICHERO_CESTA = 'html/cesta.html';
+const PRODUCTOS_JSON = fs.readFileSync('json/productos.json');
+
+//-- Obtener el array de productos
+let productos = JSON.parse(PRODUCTOS_JSON);
+
 const FICHERO_PEDIDO = 'html/pedido.html'
 
 //-- HTML de la página de respuesta
@@ -172,7 +177,30 @@ const server = http.createServer((req, res) => {
   console.log("User: " + user);
   console.log("Objetos: " + items);
 
-  //-- Acceso al recurso raiz
+    //-- Construir el objeto url con la url de la solicitud
+    //const search_URL = new URL(req.url, 'http://' + req.headers['host']);  
+    console.log('Búsqueda: ' + productos);
+
+    // Búsqueda autocompletar
+    //-- Leer los parámetros
+    let param1 = myURL.searchParams.get('param1');
+
+    console.log("  Param: " +  param1);
+
+    let result = [];
+
+    for (i=0; i<tienda["productos"].length; i++){
+      console.log("Tienda JSON: " + tienda["productos"][i]["nombre"]);
+      var product_name = tienda["productos"][i]["nombre"]
+        //-- Si el producto comienza por lo indicado en el parametro
+        //-- meter este producto en el array de resultados
+        if (param1 && product_name) {
+          if (product_name.startsWith(param1)) {
+                 result.push(product_name);
+          }
+        }
+        console.log('Resultado: ' + result)
+    }
   
   //-- Si hay datos en el cuerpo, se imprimen
   req.on('data', (cuerpo) => {
@@ -183,7 +211,6 @@ const server = http.createServer((req, res) => {
     console.log(` ${cuerpo}`);
 
     const myURL = new URL('http://' + req.headers['host'] + '?' + cuerpo);
-
     //-- Leer los parámetros
     let nombre = myURL.searchParams.get('usuario');
     console.log("Nombre: " + nombre);

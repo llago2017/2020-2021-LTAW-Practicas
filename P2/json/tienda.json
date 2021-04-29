@@ -13,16 +13,29 @@
     "productos": [{
                     "nombre": "Pocion de salud",
                     "descripcion": "Corazones extra",
-                    "stock": "3"
+                    "stock": 3
                    },
                    {
-                    "nombre": null,
-                    "descripcion": null
+                    "nombre": "Pocion electrizante",
+                    "descripcion": "Otorga resistencia frente a la electrizidad",
+                    "stock": 3
                     }, 
                     {
-                    "nombre": null,
-                    "descripcion": null
-                    }],
+                    "nombre": "Pocion ignífugo",
+                    "descripcion": "Otorga resistencia frente al fuego",
+                    "stock": 3
+                    },
+                    {
+                    "nombre": "Pocion raudo",
+                    "descripcion": "Te permite desplazarte más rápido",
+                    "stock": 3
+                    },
+                    {
+                    "nombre": "Pocion vigorizante",
+                    "descripcion": "Rellena el indicador de resistencia",
+                    "stock": 3
+                    }                
+                ],
     "pedidos": [{
         "username": null,
         "direccion de envio": null,
