@@ -195,7 +195,10 @@ const server = http.createServer((req, res) => {
         //-- Si el producto comienza por lo indicado en el parametro
         //-- meter este producto en el array de resultados
         if (param1 && product_name) {
-          if (product_name.startsWith(param1)) {
+          // Paso a mayúsculas
+          var paramU = param1.toUpperCase();
+          var productU = product_name.toUpperCase();
+          if (productU.startsWith(paramU)) {
                  result.push(product_name);
           }
         }
