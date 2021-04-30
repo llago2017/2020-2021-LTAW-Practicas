@@ -36,6 +36,12 @@ app.use(express.static('public'));
 io.on('connect', (socket) => {
   
   console.log('** NUEVA CONEXIÓN **'.yellow);
+  socket.on("nickname", (nickname) => {
+    console.log('Nombre de usuario: ' + nickname.red)
+    welcome_msg = nickname + ' se ha unido al chat!'
+    socket.username = nickname;
+    io.send(welcome_msg);
+  });
   users += 1;
 
   //-- Evento de desconexión
@@ -48,7 +54,7 @@ io.on('connect', (socket) => {
   socket.on("message", (msg)=> {
     console.log("Mensaje Recibido!: " + msg.blue);
     var socketId = socket.id;
-    console.log("socket id: " + socketId.green);
+    console.log("socket id: " + socketId.green + " " +socket.username.red);
 
     if (msg=='/help') {
         console.log("Mensaje de ayuda".red)
@@ -76,7 +82,7 @@ io.on('connect', (socket) => {
     } 
     else {
       //-- Reenviarlo a todos los clientes conectados
-      io.send(msg);
+      io.send(socket.username + ": " +msg);
     }
 
     
