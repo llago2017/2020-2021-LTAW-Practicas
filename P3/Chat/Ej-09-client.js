@@ -1,6 +1,7 @@
 //-- Elementos del interfaz
 const display = document.getElementById("display");
 const msg_entry = document.getElementById("msg_entry");
+const login_msg = document.getElementById("user");
 var nickname = false;
 //-- Crear un websocket. Se establece la conexión con el servidor
 const socket = io();
@@ -22,6 +23,7 @@ msg_entry.onchange = () => {
   } else {
     socket.emit('nickname',msg_entry.value);
     msg_entry.value = "";
+    login_msg.style.display = 'none'
     nickname = true;
   }
 
