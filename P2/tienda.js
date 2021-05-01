@@ -216,13 +216,16 @@ const server = http.createServer((req, res) => {
     const myURL = new URL('http://' + req.headers['host'] + '?' + cuerpo);
     //-- Leer los parámetros
     let nombre = myURL.searchParams.get('usuario');
+    let passw = myURL.searchParams.get('password');
     console.log("Nombre: " + nombre);
+    console.log("Nombre: " + passw);
 
     for (i=0; i<tienda["usuarios"].length; i++){
       console.log("Tienda JSON: " + tienda["usuarios"][i]["nombre"]);
       var json_user = tienda["usuarios"][i]["nombre"];
+      var json_pass = tienda["usuarios"][i]["password"];
 
-      if (json_user == nombre) {
+      if (json_user == nombre && json_pass == passw ) {
         console.log("usuario existe");
         user = nombre;
         registered = true;
@@ -257,7 +260,7 @@ const server = http.createServer((req, res) => {
         content = RESPUESTA.replace("PRUEBA", user);
         content = content.replace("REGISTRO", "Usuario válido");
       } else {
-        content = RESPUESTA.replace("PRUEBA", "Usuario no registrado");
+        content = RESPUESTA.replace("PRUEBA", "Usuario y/o contraseña incorrecto");
         content = content.replace("REGISTRO", "Error");
       }
 
