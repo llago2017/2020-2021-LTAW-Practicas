@@ -1,3 +1,37 @@
 .user {
     display:block;
 }
+
+html, input {
+    font-family:
+      "HelveticaNeue-Light",
+      "Helvetica Neue Light",
+      "Helvetica Neue",
+      Helvetica,
+      Arial,
+      "Lucida Grande",
+      sans-serif;
+  }
+
+#msg_entry {
+    background-color: black;
+    border: none;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    padding-bottom: 15px;
+    text-align: center;
+    width: 100%;
+
+    color: #fff;
+    font-size: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+  .chat {
+      width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+
+      border: 10px solid black;
+  }
