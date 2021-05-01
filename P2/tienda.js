@@ -177,10 +177,6 @@ const server = http.createServer((req, res) => {
   console.log("User: " + user);
   console.log("Objetos: " + items);
 
-    //-- Construir el objeto url con la url de la solicitud
-    //const search_URL = new URL(req.url, 'http://' + req.headers['host']);  
-    console.log('Búsqueda: ' + productos);
-
     // Búsqueda autocompletar
     //-- Leer los parámetros
     let param1 = myURL.searchParams.get('param1');
@@ -190,7 +186,6 @@ const server = http.createServer((req, res) => {
     let result = [];
 
     for (i=0; i<tienda["productos"].length; i++){
-      console.log("Tienda JSON: " + tienda["productos"][i]["nombre"]);
       var product_name = tienda["productos"][i]["nombre"]
         //-- Si el producto comienza por lo indicado en el parametro
         //-- meter este producto en el array de resultados
@@ -215,6 +210,8 @@ const server = http.createServer((req, res) => {
 
     const myURL = new URL('http://' + req.headers['host'] + '?' + cuerpo);
     //-- Leer los parámetros
+
+    // Inicio de sesión
     let nombre = myURL.searchParams.get('usuario');
     let passw = myURL.searchParams.get('password');
     console.log("Nombre: " + nombre);
@@ -234,8 +231,23 @@ const server = http.createServer((req, res) => {
     }
 
     let direccion = myURL.searchParams.get('direccion');
+    let tarjeta = myURL.searchParams.get('tarjeta');
     if (direccion) {
-      console.log("Es un pedido")
+      console.log("Es un pedido: " + tarjeta)
+      for (i=0; i<tienda["pedidos"].length; i++){
+        json_user = tienda["pedidos"][i]["username"];
+        if (!json_user) {
+          tienda["pedidos"][i]["username"] = user_activo;
+          tienda["pedidos"][i]["direccion"] = direccion;
+          tienda["pedidos"][i]["tarjeta"] = tarjeta;
+          tienda["pedidos"][i]["lista"] = item_list;
+          // Guardo la modifiación
+
+          let json_salida = JSON.stringify(tienda);
+
+          fs.writeFileSync(FICHERO_JSON,json_salida);
+        }
+      }
     }
 
   });
@@ -284,7 +296,7 @@ const server = http.createServer((req, res) => {
           var item_array = items.split(":")
           var print_item = ""
           for (let i = 0; i < item_array.length; i++) {
-            print_item += item_array[i] + numero + "<br>";
+            print_item += item_array[i] + "<br>";
           }
           console.log("IMPRIME: " + print_item)
           content = content.replace("Lista vacía",print_item);
