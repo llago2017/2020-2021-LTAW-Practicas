@@ -39,8 +39,8 @@
                 ],
     "pedidos": [{
         "username": null,
-        "direccion de envio": null,
-        "numero de tarjeta": null,
+        "direccion": null,
+        "tarjeta": null,
         "lista": []
     }]
 }
