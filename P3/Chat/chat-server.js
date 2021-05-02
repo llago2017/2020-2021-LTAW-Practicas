@@ -90,6 +90,20 @@ io.on('connect', (socket) => {
       io.to(socketId).emit('message', msg);
     } else if (msg.split(" ")[0] == "/msg") {
       console.log("Es un mensaje privado")
+      // Busco el lugar del primer espacio para recoger solo el mensaje.
+      var prueba = msg.indexOf(" ","/msg");
+      var prueba2 = msg.slice(prueba+1);
+
+      for (i=0; i< dict.length; i++){
+        if (dict[i].name == msg.split(" ")[1]) {
+          var priv_id = dict[i].id;
+          break;
+        }
+      }
+        console.log("MENSAJE A: " + msg.split(" ")[1].red + " con id: " + priv_id.green)
+       // Mando el mensaje a ese usuario
+       console.log(priv_id)
+       io.to(priv_id).emit('message', socket.username + ": " + prueba2);
     } else {
       //-- Reenviarlo a todos los clientes conectados
           io.send(socket.username + ": " + msg);
