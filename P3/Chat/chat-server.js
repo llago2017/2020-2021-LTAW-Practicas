@@ -6,6 +6,7 @@ const colors = require('colors');
 
 // Control de número de usuarios
 var users = 0;
+var dict = [];
 
 const PUERTO = 8080;
 
@@ -36,10 +37,13 @@ app.use(express.static('public'));
 io.on('connect', (socket) => {
   
   console.log('** NUEVA CONEXIÓN **'.yellow);
+
+  // Obtengo el nombre de usuario
   socket.on("nickname", (nickname) => {
     console.log('Nombre de usuario: ' + nickname.red)
     welcome_msg = nickname + ' se ha unido al chat!'
     socket.username = nickname;
+    dict.push({ name: socket.username, id: socket.id });
     io.send(welcome_msg);
   });
   users += 1;
@@ -54,7 +58,7 @@ io.on('connect', (socket) => {
   socket.on("message", (msg)=> {
     console.log("Mensaje Recibido!: " + msg.blue);
     var socketId = socket.id;
-    console.log("socket id: " + socketId.green + " " +socket.username.red);
+    console.log("socket id: " + socketId.green + " " +socket.username);
 
     if (msg=='/help') {
         console.log("Mensaje de ayuda".red)
@@ -77,10 +81,14 @@ io.on('connect', (socket) => {
         msg = 'Fecha: ' + dd + '/' + mm + '/' + yy;
         io.to(socketId).emit('message', msg);
     } else if (msg == '/list') {
-      msg = 'Actualmente hay ' + users + " usuarios conectados."
+      msg = 'Actualmente hay ' + users + " usuarios conectados. <br>"
+      console.log(dict)
+      // Recorro el diccionario de usuarios
+      for (i=0; i< dict.length; i++){
+        msg += "> " + (dict[i].name) + "<br>"
+      }
       io.to(socketId).emit('message', msg);
-    } 
-    else {
+    } else {
       //-- Reenviarlo a todos los clientes conectados
       io.send(socket.username + ": " +msg);
     }
