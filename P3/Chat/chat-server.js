@@ -88,12 +88,12 @@ io.on('connect', (socket) => {
         msg += "> " + (dict[i].name) + "<br>"
       }
       io.to(socketId).emit('message', msg);
+    } else if (msg.split(" ")[0] == "/msg") {
+      console.log("Es un mensaje privado")
     } else {
       //-- Reenviarlo a todos los clientes conectados
-      io.send(socket.username + ": " +msg);
+          io.send(socket.username + ": " + msg);
     }
-
-    
   });
 
 });
