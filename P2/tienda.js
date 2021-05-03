@@ -350,6 +350,8 @@ const server = http.createServer((req, res) => {
 
     for (i=0; i<tienda["productos"].length; i++){
       var product_name = tienda["productos"][i]["nombre"]
+      var product_url = tienda["productos"][i]["url"]
+
         //-- Si el producto comienza por lo indicado en el parametro
         //-- meter este producto en el array de resultados
         if (param1 && product_name) {
@@ -357,17 +359,17 @@ const server = http.createServer((req, res) => {
           var paramU = param1.toUpperCase();
           var productU = product_name.toUpperCase();
           if (productU.startsWith(paramU)) {
-                 result.push(product_name);
+                 var prueba = '<a href="' + product_url +'">' + product_name + '</a>' + '<br>'
+                 result.push(prueba);
           }
         }
 
-        console.log('Resultado: ' + result)
         c_type = "application/json";
         data = JSON.stringify(result);
         
     }
   }
-  
+
     //-- Generar el mensaje de respuesta
       res.writeHead(200, {'Content-Type': c_type});
       res.write(data);
