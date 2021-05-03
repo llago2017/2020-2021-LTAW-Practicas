@@ -170,35 +170,15 @@ const server = http.createServer((req, res) => {
     file = 'json/tienda.json';
   }
 
-  //-- Obtener le usuario que ha accedido
-  //-- null si no se ha reconocido
-  let user = get_user(req);
-  let items = get_items(req);
-  console.log("User: " + user);
-  console.log("Objetos: " + items);
+    //-- Obtener le usuario que ha accedido
+    //-- null si no se ha reconocido
+    let user = get_user(req);
+    let items = get_items(req);
+    console.log("User: " + user);
+    console.log("Objetos: " + items);
 
-    // Búsqueda autocompletar
-    //-- Leer los parámetros
-    let param1 = myURL.searchParams.get('param1');
-
-    console.log("  Param: " +  param1);
-
-    let result = [];
-
-    for (i=0; i<tienda["productos"].length; i++){
-      var product_name = tienda["productos"][i]["nombre"]
-        //-- Si el producto comienza por lo indicado en el parametro
-        //-- meter este producto en el array de resultados
-        if (param1 && product_name) {
-          // Paso a mayúsculas
-          var paramU = param1.toUpperCase();
-          var productU = product_name.toUpperCase();
-          if (productU.startsWith(paramU)) {
-                 result.push(product_name);
-          }
-        }
-        console.log('Resultado: ' + result)
-    }
+   
+    
   
   //-- Si hay datos en el cuerpo, se imprimen
   req.on('data', (cuerpo) => {
@@ -359,6 +339,35 @@ const server = http.createServer((req, res) => {
         break;
     }
 
+     // Búsqueda autocompletar
+    //-- Leer los parámetros
+    let param1 = myURL.searchParams.get('param1');
+
+    if (param1) {
+      console.log("  Param: " +  param1);
+
+    let result = [];
+
+    for (i=0; i<tienda["productos"].length; i++){
+      var product_name = tienda["productos"][i]["nombre"]
+        //-- Si el producto comienza por lo indicado en el parametro
+        //-- meter este producto en el array de resultados
+        if (param1 && product_name) {
+          // Paso a mayúsculas
+          var paramU = param1.toUpperCase();
+          var productU = product_name.toUpperCase();
+          if (productU.startsWith(paramU)) {
+                 result.push(product_name);
+          }
+        }
+
+        console.log('Resultado: ' + result)
+        c_type = "application/json";
+        data = JSON.stringify(result);
+        
+    }
+  }
+  
     //-- Generar el mensaje de respuesta
       res.writeHead(200, {'Content-Type': c_type});
       res.write(data);

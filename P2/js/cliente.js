@@ -1,7 +1,8 @@
 console.log("Ejecutando Javascript...");
 
 //-- Elementos HTML para mostrar informacion
-const display1 = document.getElementById("display1");
+const display1 = document.getElementById("display");
+const resultado = document.getElementById("hidden")
 
 //-- Caja de busqueda
 const caja = document.getElementById("caja");
@@ -21,11 +22,11 @@ caja.oninput = () => {
 
             //-- Solo la procesamos si la respuesta es correcta
             if (m.status==200) {
-
+                console.log("RESOUETAAAAA")
                 //-- La respuesta es un objeto JSON
                 let productos = JSON.parse(m.responseText)
 
-                console.log(productos);
+                console.log('PRODUCTOS: ' + Object.keys(productos));
 
                 //-- Borrar el resultado anterior
                 display1.innerHTML = "";
@@ -46,7 +47,6 @@ caja.oninput = () => {
                 //-- Hay un error en la petición
                 //-- Lo notificamos en la consola y en la propia web
                 console.log("Error en la petición: " + m.status + " " + m.statusText);
-                display2.innerHTML += '<p>ERROR</p>'
             }
         }
     }
@@ -55,6 +55,8 @@ caja.oninput = () => {
 
     //-- La peticion se realia solo si hay al menos 1 carácter
     if (caja.value.length >= 1) {
+            
+      resultado.style.display = "block"
 
       //-- Configurar la petición
       m.open("GET","/productos?param1=" + caja.value, true);
@@ -63,6 +65,7 @@ caja.oninput = () => {
       m.send();
       
     } else {
+        resultado.style.display = "none"
         display1.innerHTML="";
     }
 }
