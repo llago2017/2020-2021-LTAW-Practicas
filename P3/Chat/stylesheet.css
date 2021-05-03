@@ -29,9 +29,14 @@ html, input {
 }
 
   .chat {
-      width: 500px;
+      width: 75%;
       margin-left: auto;
       margin-right: auto;
 
       border: 10px solid black;
+  }
+
+  #display {
+      height: 300px;
+      overflow-y: scroll;
   }
