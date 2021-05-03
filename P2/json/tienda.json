@@ -37,10 +37,5 @@
                     "stock": 3
                     }                
                 ],
-    "pedidos": [{
-        "username": null,
-        "direccion": null,
-        "tarjeta": null,
-        "lista": []
-    }]
+    "pedidos": []
 }

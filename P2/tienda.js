@@ -234,20 +234,19 @@ const server = http.createServer((req, res) => {
     let tarjeta = myURL.searchParams.get('tarjeta');
     if (direccion) {
       console.log("Es un pedido: " + tarjeta)
-      for (i=0; i<tienda["pedidos"].length; i++){
-        json_user = tienda["pedidos"][i]["username"];
-        if (!json_user) {
-          tienda["pedidos"][i]["username"] = user_activo;
-          tienda["pedidos"][i]["direccion"] = direccion;
-          tienda["pedidos"][i]["tarjeta"] = tarjeta;
-          tienda["pedidos"][i]["lista"] = item_list;
-          // Guardo la modifiación
-
-          let json_salida = JSON.stringify(tienda);
-
-          fs.writeFileSync(FICHERO_JSON,json_salida);
-        }
+        
+      var n_pedido = {
+         "username": user_activo,
+         "direccion": direccion,
+         "tarjeta": tarjeta,
+         "lista": item_list.split(":") 
       }
+
+      // lo añado al array de pedidos
+      tienda["pedidos"].push(n_pedido)
+
+      let json_salida = JSON.stringify(tienda);
+      fs.writeFileSync(FICHERO_JSON,json_salida);
     }
 
   });
