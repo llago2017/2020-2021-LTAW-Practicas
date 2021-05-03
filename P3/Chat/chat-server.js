@@ -88,22 +88,27 @@ io.on('connect', (socket) => {
         msg += "> " + (dict[i].name) + "<br>"
       }
       io.to(socketId).emit('message', msg);
-    } else if (msg.split(" ")[0] == "/msg") {
+    } else if (msg.split("/")[0] == "") {
+      // msg.split("/")[0] --> " "
+      // msgsplit("/")[1] --> "username + mensaje"
       console.log("Es un mensaje privado")
-      // Busco el lugar del primer espacio para recoger solo el mensaje.
-      var prueba = msg.indexOf(" ","/msg");
-      var prueba2 = msg.slice(prueba+1);
+
+      // separo el usuario del mensaje
+      var index = msg.split("/")[1].indexOf(" ")
+      var new_msg = msg.slice(index + 1)
+      var user2priv = msg.split("/")[1].slice(0,index)
 
       for (i=0; i< dict.length; i++){
-        if (dict[i].name == msg.split(" ")[1]) {
+        if (dict[i].name == user2priv) {
           var priv_id = dict[i].id;
           break;
         }
       }
-        console.log("MENSAJE A: " + msg.split(" ")[1].red + " con id: " + priv_id.green)
-       // Mando el mensaje a ese usuario
-       console.log(priv_id)
-       io.to(priv_id).emit('message', socket.username + ": " + prueba2);
+        console.log("MENSAJE A: " + user2priv.red + " con id: " + priv_id.green)
+       // Me quedo solo con el mensaje haciendo un split [0] --> /username
+       // [1] --> mensaje 
+        io.to(priv_id).emit('message', socket.username + ": " + new_msg);
+        io.to(socketId).emit('message', socket.username + ": " + new_msg);
     } else {
       //-- Reenviarlo a todos los clientes conectados
           io.send(socket.username + ": " + msg);
