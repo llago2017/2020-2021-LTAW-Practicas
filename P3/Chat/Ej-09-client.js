@@ -2,18 +2,27 @@
 const display = document.getElementById("display");
 const msg_entry = document.getElementById("msg_entry");
 const login_msg = document.getElementById("user");
+var objDiv = document.getElementsByClassName("msg_recibidos");
+var elmnt = document.getElementById("msg_recibidos");
+
+
+function main() {
+  // Cada 100ms se actualiza el scroll para estar actualizado
+  setInterval(function(){  
+    elmnt.scrollTop = elmnt.scrollHeight;
+  }, 100);
+}
 var nickname = false;
 //-- Crear un websocket. Se establece la conexión con el servidor
 const socket = io();
 
 
 socket.on("message", (msg)=>{
-  display.innerHTML += '<p style="color:blue">' + msg + '</p>';
+  display.innerHTML += '<p style="color:blue">' + msg + '</p>';  
 });
 
 //-- Al apretar el botón se envía un mensaje al servidor
 msg_entry.onchange = () => {
-  
   if (nickname) {
     if (msg_entry.value)
     socket.send(msg_entry.value);

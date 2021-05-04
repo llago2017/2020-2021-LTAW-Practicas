@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .user {
     display:block;
 }
@@ -32,11 +36,11 @@ html, input {
       width: 75%;
       margin-left: auto;
       margin-right: auto;
-
       border: 10px solid black;
   }
 
-  #display {
-      height: 300px;
-      overflow-y: scroll;
+  #msg_recibidos{
+      height: 250px;
+      padding-bottom: 20px;
+      overflow-y: auto;
   }
