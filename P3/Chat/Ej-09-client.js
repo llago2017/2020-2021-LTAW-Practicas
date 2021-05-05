@@ -2,7 +2,7 @@
 const display = document.getElementById("display");
 const msg_entry = document.getElementById("msg_entry");
 const login_msg = document.getElementById("user");
-var objDiv = document.getElementsByClassName("msg_recibidos");
+const login_backgr = document.getElementsByClassName("chat");
 var elmnt = document.getElementById("msg_recibidos");
 
 
@@ -33,6 +33,9 @@ msg_entry.onchange = () => {
     socket.emit('nickname',msg_entry.value);
     msg_entry.value = "";
     login_msg.style.display = 'none'
+    // El fondo pasa a blanco
+    login_backgr[0].style.animationName = 'static'
+    login_backgr[0].style.textAlign = "left"
     nickname = true;
   }
 
