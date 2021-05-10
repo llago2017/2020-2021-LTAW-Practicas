@@ -1,8 +1,8 @@
 {
     "usuarios": [{
                     "nombre" : "lorena",
-                    "Real": null,
-                    "email": null
+                    "password":"123",
+                    "Real":"Lorena"
         
                 },
                 {
