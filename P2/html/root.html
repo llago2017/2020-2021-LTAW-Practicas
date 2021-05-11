@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/form.css">
+    <title>Tienda Online - Avanzado</title>
+  </head>
+  <body>
+  <div class="form">
+    <span class="title">Añadir objeto</span>
+    <hr>
+    <form action="/objeto" method="post">
+      Nombre del objeto:
+      <input type="text" name="new_obj"/>
+      <p></p>
+      Descripción:
+      <input type="text" name="new_des"/>
+      Sección:
+      <input type="text" name="section"/>
+      Cantidad:
+      <input type="text" name="stock"/>
+
+      <p></p>
+      <input class="button" type="submit" value="Añadir"/>
+  </form>
+  </div>
+
+  <div class="form">
+    Pedidos pendientes
+    <hr>
+    Lista vacía
+  </div>
+    
+  </body>
+</html>

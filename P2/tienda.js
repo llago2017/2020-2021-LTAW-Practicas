@@ -298,7 +298,12 @@ const server = http.createServer((req, res) => {
       if (user_activo) {
           //-- Añadir a la página el nombre del usuario
           console.log("user: " + user_activo);
-          data = MAIN.replace("Login", user_activo);
+          if (user_activo == 'root') {
+            data = MAIN.replace("Login", "<a href='html/root.html'> " + user_activo + "</a>" );
+          } else {
+            data = MAIN.replace("Login", user_activo);
+          }
+          
       } else {
           //-- Mostrar el enlace a la página de login
           console.log("No hay user")
