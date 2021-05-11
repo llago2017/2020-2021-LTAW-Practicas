@@ -85,3 +85,8 @@ html, input {
     overflow-y: auto;
     position: relative;
 }
+
+.typing {
+  display: 'none';
+  color: black;
+}
