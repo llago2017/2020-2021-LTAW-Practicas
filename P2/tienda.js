@@ -27,6 +27,9 @@ function getExtension(filename) {
 const FICHERO_RESP = 'html/form_resp.html';
 const FICHERO_CESTA = 'html/cesta.html';
 const PRODUCTOS_JSON = fs.readFileSync('json/productos.json');
+const ROOT_FILE = 'html/root.html';
+
+const ROOT = fs.readFileSync(ROOT_FILE, 'utf-8');
 
 //-- Obtener el array de productos
 let productos = JSON.parse(PRODUCTOS_JSON);
@@ -292,6 +295,27 @@ const server = http.createServer((req, res) => {
 
     }
     
+    if (file == ROOT_FILE) {
+      console.log("PEDIDOS")
+     console.log(tienda["pedidos"])
+     var print_list = "";
+     var mime = "text/html"
+
+     for (i=0; i<tienda["pedidos"].length; i++){
+      print_list += "Usuario: " + tienda["pedidos"][i]["username"] + "<br>" +
+                    "direccion: " + tienda["pedidos"][i]["direccion"] + "<br>" +
+                    "tarjeta: " + tienda["pedidos"][i]["tarjeta"] + "<br>" +
+                    "lista"+ tienda["pedidos"][i]["lista"] + "<br>" + "<br>";
+     }
+
+      content = ROOT.replace("Lista vacía",print_list);
+      res.setHeader('Content-Type', mime);
+      res.write(content);
+      res.end();
+      return;
+
+    }
+
     if (myURL.pathname == '/') {
       c_type = "text/html";
       //--- Si la variable user está asignada
