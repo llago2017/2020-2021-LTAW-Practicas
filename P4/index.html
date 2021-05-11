@@ -10,16 +10,16 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self';" />
 
     <!-- Hoja de estilo de la interfaz -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylesheet.css">
 
     <!-- Cargar el proceso asociado a esta página -->
     <script src="index.js" defer></script>
+    <script src="node_modules/socket.io/socket.io.js"></script>
 
     <title>Mi APP (version 9)</title>
 </head>
 <body>
     <h1>INTERFAZ GRÁFICA</h1>
-    <img src="logo-urjc.png" alt="Logo-URJC" width=150px>
 
     <hr>
     <h2>Información:</h2>
@@ -27,8 +27,17 @@
         <li>Version node: <span id="info1" class="blue"></span> </li>
         <li>Version electron: <span id="info2" class="blue"></span></li>
         <li>Version chrome: <span id="info3" class="blue"></span></li>
+        <li>Url: <span id="info4" class="blue"></span></li>
     </ul>
-
+    <h2>Ejemplo 9: Mini-chat</h2>
+    <div class="chat">
+      <div id="msg_recibidos">
+        <p id="display"></p>
+        <p class="typing"></p>
+        <div id="user">Introduzca nombre de usuario: </div>
+      </div>
+      <input type="text" placeholder="Escribe aquí los mensajes..." autocomplete="off" id="msg_entry">
+    </div>
     <hr>
     <p>   <input type="button" value="Test" id="btn_test"> </p>
    <p>Display:</p>
