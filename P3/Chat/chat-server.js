@@ -3,6 +3,10 @@ const socket = require('socket.io');
 const http = require('http');
 const express = require('express');
 const colors = require('colors');
+const fs = require('fs');
+
+const FICHERO_HTML = 'Ej-09.html';
+const HTML = fs.readFileSync(FICHERO_HTML, 'utf-8');
 
 // Control de número de usuarios
 var users = 0;
@@ -53,6 +57,18 @@ io.on('connect', (socket) => {
     console.log('** CONEXIÓN TERMINADA **'.yellow);
     users -= 1;
   });  
+
+  //-- Evento de escribiendo
+  socket.on('typing', (data) => {
+      io.emit('display', data)
+  });  
+
+  //-- Quitar escribiendo
+  socket.on('notTyping', (data) => {
+    io.emit('hide', data)
+  });  
+  
+
 
   //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
   socket.on("message", (msg)=> {
