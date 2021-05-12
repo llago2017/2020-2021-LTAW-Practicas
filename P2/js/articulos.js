@@ -12,7 +12,7 @@ function send_cookie(){
   items.push(art_name.innerText);
   // Paso el array a string
   var final_cookie = items.join(':')
-  document.cookie = "carrito=" + final_cookie + "; path=/";
+  document.cookie = "carrito=" + final_cookie + "; path=/ ; Secure";
   console.log(items);
 }
 
