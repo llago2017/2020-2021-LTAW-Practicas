@@ -15,17 +15,15 @@ function main() {
     elmnt.scrollTop = elmnt.scrollHeight;
   }, 100);
 
-  document.onkeydown = function(ev) {
-    console.log("Pulsando trcals")
-    onKeyDown();
-  }
-
-  setInterval(function() {
-    document.onkeyup = function(ev) {
-      console.log("Sa parap")
-      typingstopped();
+    document.onkeydown = function(ev) {
+      if (nickname && ev.key != 'Enter') {
+        onKeyDown();
+      }
     }
-  }, 1500);
+  
+    document.onkeyup = function(ev) {
+      setTimeout(typingstopped, 700);
+    }    
   
 }
 
@@ -44,26 +42,26 @@ function onKeyDown(){
     typing = true
     console.log(user)
     socket.emit('typing', user );
-    time = setTimeout(typingstopped, 500);
-  } else {
-    time = setTimeout(typingstopped, 500);
-  }
-
+  } 
 }
 
 socket.on('display', (data) => {
-  typing_msg[0].innerHTML = data + " is typing";
-  typing_msg[0].style.display = 'block'
+  if (data != user && nickname) {
+    typing_msg[0].innerHTML = data + " is typing";
+  }
+  
 });
 
 socket.on('hide', (data) => {
   setTimeout(function(){ 
-    typing_msg[0].innerHTML = ""; }, 1000);
+    typing_msg[0].innerHTML = ""; }, 1500);
   
 });
 
 socket.on("message", (msg)=>{
-  display.innerHTML += '<p style="color:blue">' + msg + '</p>';  
+  if (nickname) {
+    display.innerHTML += '<p style="color:blue">' + msg + '</p>';  
+  }
 });
 
 //-- Al apretar el botón se envía un mensaje al servidor
