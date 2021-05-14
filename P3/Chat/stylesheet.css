@@ -24,6 +24,10 @@ html, input {
       sans-serif;
   }
 
+  p {
+    display: block;
+  }
+
 #msg_entry {
     background-color: black;
     border: none;
@@ -89,4 +93,10 @@ html, input {
 .typing {
   display: 'none';
   color: black;
+}
+
+#display_user {
+  margin-left: 50%;
+  color: red;
+  text-align: right;
 }

@@ -1,5 +1,6 @@
 //-- Elementos del interfaz
 const display = document.getElementById("display");
+const display_user = document.getElementById("display_user");
 const msg_entry = document.getElementById("msg_entry");
 const login_msg = document.getElementById("user");
 const login_backgr = document.getElementsByClassName("chat");
@@ -22,7 +23,7 @@ function main() {
     }
   
     document.onkeyup = function(ev) {
-      setTimeout(typingstopped, 700);
+      setTimeout(typingstopped, 1000);
     }    
   
 }
@@ -40,7 +41,6 @@ function typingstopped(){
 function onKeyDown(){
   if(typing == false) {
     typing = true
-    console.log(user)
     socket.emit('typing', user );
   } 
 }
@@ -59,8 +59,16 @@ socket.on('hide', (data) => {
 });
 
 socket.on("message", (msg)=>{
+
+  var user_msg = msg.split(":")[0]
   if (nickname) {
-    display.innerHTML += '<p style="color:blue">' + msg + '</p>';  
+    if (user == user_msg) {
+      console.log("PRUEBA --> " + msg.split(":")[0] + msg )
+      display.innerHTML += '<p id="display_user">' + msg + '</p>'; 
+    } else {
+      display.innerHTML += '<p style="color:blue">' + msg + '</p>'; 
+    }
+     
   }
 });
 
