@@ -46,6 +46,9 @@ const ERROR = fs.readFileSync('html/error.html', 'utf-8');
 //-- HTML principal
 const MAIN = fs.readFileSync('index.html', 'utf-8');
 
+//-- Respuesta root
+const FICHERO_ROOT = "html/root_form.html"
+
 //-- Leo base de datos
 const FICHERO_JSON = "json/tienda.json"
 const tienda_json = fs.readFileSync(FICHERO_JSON);
@@ -168,6 +171,11 @@ const server = http.createServer((req, res) => {
     
   }
 
+  if (myURL.pathname == '/objeto') {
+    c_type = "text/html"
+    file = FICHERO_ROOT;    
+  }
+
   if (myURL.pathname == '/productos') {
     c_type = "application/json";
     file = 'json/tienda.json';
@@ -230,6 +238,27 @@ const server = http.createServer((req, res) => {
 
       let json_salida = JSON.stringify(tienda);
       fs.writeFileSync(FICHERO_JSON,json_salida);
+    }
+
+    // Añadiendo objetos desde root
+    let new_obj = myURL.searchParams.get('new_obj');
+    let new_des = myURL.searchParams.get('new_des');
+    let stock = myURL.searchParams.get('stock');
+
+    if (new_obj) {
+      var add_obj = {
+        "url": null,
+        "nombre": new_obj,
+        "descripción": new_des,
+        "stock": stock 
+     }
+
+     // lo añado al array de pedidos
+     tienda["productos"].push(add_obj)
+
+     let json_salida = JSON.stringify(tienda);
+     fs.writeFileSync(FICHERO_JSON,json_salida);
+      
     }
 
   });
