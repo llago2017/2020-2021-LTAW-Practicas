@@ -9,6 +9,13 @@ var typing_msg = document.getElementsByClassName("typing");
 var user = "";
 var typing = false;
 var nickname = false;
+const sound_msg = new Audio("new_msg.oga");
+
+
+function play_sound(sound){
+  sound.currentTime = 0;
+  sound.play();
+}
 
 function main() {
   // Cada 100ms se actualiza el scroll para estar actualizado
@@ -66,6 +73,7 @@ socket.on("message", (msg)=>{
       console.log("PRUEBA --> " + msg.split(":")[0] + msg )
       display.innerHTML += '<p id="display_user">' + msg + '</p>'; 
     } else {
+      play_sound(sound_msg);
       display.innerHTML += '<p style="color:blue">' + msg + '</p>'; 
     }
      
