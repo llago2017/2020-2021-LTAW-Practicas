@@ -30,10 +30,14 @@ const display = document.getElementById("display");
 const login_backgr = document.getElementsByClassName("chat");
 var elmnt = document.getElementById("msg_recibidos");
 var typing_msg = document.getElementsByClassName("typing");
-var user = "null";
-var typing = false;
+var nusuarios = document.getElementById("users");
 
 electron.ipcRenderer.on('print', (event, message) => {
   console.log("Recibido: " + message);
   display.innerHTML += '<p style="color:blue">' + message + '</p>'; 
+});
+
+electron.ipcRenderer.on('users', (event, message) => {
+  console.log("Recibido: " + message);
+  nusuarios.innerHTML = '<p style="color:blue">' + message + '</p>'; 
 });

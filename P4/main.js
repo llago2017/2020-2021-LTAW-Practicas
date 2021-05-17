@@ -81,13 +81,15 @@ io.on('connect', (socket) => {
     socket.username = nickname;
     dict.push({ name: socket.username, id: socket.id });
     io.send(welcome_msg);
+    users += 1;
+    win.webContents.send('users', users);
   });
-  users += 1;
 
   //-- Evento de desconexión
   socket.on('disconnect', function(){
     console.log('** CONEXIÓN TERMINADA **'.yellow);
     users -= 1;
+    win.webContents.send('users', users);
   });  
 
   //-- Evento de escribiendo
