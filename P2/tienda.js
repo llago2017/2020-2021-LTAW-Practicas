@@ -244,13 +244,29 @@ const server = http.createServer((req, res) => {
     let new_obj = myURL.searchParams.get('new_obj');
     let new_des = myURL.searchParams.get('new_des');
     let stock = myURL.searchParams.get('stock');
+    let section = myURL.searchParams.get('seccion')
+    console.log('SECCION --> ' + section)
+    var new_url = "";
 
+    switch (section) {
+      case 'Pociones':
+        new_url = "html/pociones.html";
+        break;
+    
+      case 'Armas':
+        new_url = "html/armas.html"
+        break;
+
+      case 'Escudos':
+        new_url = "html/escudos.html"
+        break;
+    }
     if (new_obj) {
       var add_obj = {
-        "url": null,
+        "url": new_url,
         "nombre": new_obj,
         "descripción": new_des,
-        "stock": stock 
+        "stock": parseInt(stock) 
      }
 
      // lo añado al array de pedidos
