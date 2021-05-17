@@ -29,6 +29,8 @@ electron.app.on('ready', () => {
   //-- Cargar interfaz gráfica en HTML
   win.loadFile("index.html");
 
+  win.webContents.send('print', "MENSAJE ENVIADO DESDE PROCESO MAIN");
+
 });
 
 // TODO CHAT
@@ -151,6 +153,7 @@ io.on('connect', (socket) => {
     } else {
       //-- Reenviarlo a todos los clientes conectados
           io.send(socket.username + ": " + msg);
+          win.webContents.send('print', msg);
     }
   });
 

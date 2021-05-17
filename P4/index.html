@@ -14,7 +14,7 @@
 
     <!-- Cargar el proceso asociado a esta página -->
     <script src="index.js" defer></script>
-    <script src="node_modules/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
     <title>Mi APP (version 9)</title>
 </head>
@@ -34,9 +34,7 @@
       <div id="msg_recibidos">
         <p id="display"></p>
         <p class="typing"></p>
-        <div id="user">Introduzca nombre de usuario: </div>
       </div>
-      <input type="text" placeholder="Escribe aquí los mensajes..." autocomplete="off" id="msg_entry">
     </div>
     <hr>
     <p>   <input type="button" value="Test" id="btn_test"> </p>
