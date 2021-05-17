@@ -153,7 +153,7 @@ io.on('connect', (socket) => {
     } else {
       //-- Reenviarlo a todos los clientes conectados
           io.send(socket.username + ": " + msg);
-          win.webContents.send('print', msg);
+          win.webContents.send('print', socket.username + ": " + msg);
     }
   });
 

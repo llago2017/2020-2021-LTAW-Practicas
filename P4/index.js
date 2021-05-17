@@ -35,5 +35,5 @@ var typing = false;
 
 electron.ipcRenderer.on('print', (event, message) => {
   console.log("Recibido: " + message);
-  print.textContent = message;
+  display.innerHTML += '<p style="color:blue">' + message + '</p>'; 
 });
