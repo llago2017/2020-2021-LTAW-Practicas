@@ -1,92 +1,102 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #user {
-        position: absolute;
-        top:50%;
-        left: 50%;           
-        margin-left: -220px;
+      position: absolute;
+      top:50%;
+      left: 50%;           
+      margin-left: -220px;
 
-        font-size: 200%;
-        color: rgb(0, 0, 0);
-        font-weight: 100;
+      font-size: 200%;
+      color: rgb(0, 0, 0);
+      font-weight: 100;
 }
 
 html, input {
-    font-family:
-      "HelveticaNeue-Light",
-      "Helvetica Neue Light",
-      "Helvetica Neue",
-      Helvetica,
-      Arial,
-      "Lucida Grande",
-      sans-serif;
-  }
+  font-family:
+    "HelveticaNeue-Light",
+    "Helvetica Neue Light",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    "Lucida Grande",
+    sans-serif;
+}
+
+p {
+  display: block;
+}
 
 #msg_entry {
-    background-color: black;
-    border: none;
-    outline: none;
-    padding: 15px;
-    text-align: center;
-    width: 100%;
+  background-color: black;
+  border: none;
+  outline: none;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
 
-    color: #fff;
-    font-size: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  color: #fff;
+  font-size: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .chat {
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid rgb(179, 179, 179);
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 10px 6px 25px 0px rgba(0,0,0,0.58);
-    text-align:center;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 10px 6px 25px 0px rgba(0,0,0,0.58);
+  text-align:center;
 
-    animation-name: color;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
+  animation-name: color;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
 
 }
 
 /* Animaciones del fondo */
 @keyframes color {
-  0% {
-    background-color: rgb(255, 255, 255);
-  }
-  50% {
-    background-color: #4285f4;
-  }
-  75% {
-    background-color: rgb(192, 81, 174);
-  }
-  100% {
-    background-color: rgb(255, 235, 252);
-  }
+0% {
+  background-color: rgb(255, 255, 255);
+}
+50% {
+  background-color: #4285f4;
+}
+75% {
+  background-color: rgb(192, 81, 174);
+}
+100% {
+  background-color: rgb(255, 235, 252);
+}
 }
 
 @keyframes static {
-  0% {
-    background-color: rgb(255, 255, 255);
-  }
-  100% {
-    background-color: rgb(255, 255, 255);
-  }
+0% {
+  background-color: rgb(255, 255, 255);
+}
+100% {
+  background-color: rgb(255, 255, 255);
+}
 }
 
 #msg_recibidos{
-    height: 250px;
-    padding-bottom: 20px;
-    overflow-y: auto;
-    position: relative;
+  height: 250px;
+  padding-bottom: 20px;
+  overflow-y: auto;
+  position: relative;
 }
 
 .typing {
-  display: 'none';
-  color: black;
+display: 'none';
+color: black;
+}
+
+#display_user {
+margin-left: 50%;
+color: red;
+text-align: right;
 }

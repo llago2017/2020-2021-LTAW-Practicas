@@ -97,6 +97,11 @@ io.on('connect', (socket) => {
       io.emit('display', data)
   });  
 
+  //-- Quitar escribiendo
+  socket.on('notTyping', (data) => {
+    io.emit('hide', data)
+  });  
+  
   //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
   socket.on("message", (msg)=> {
     console.log("Mensaje Recibido!: " + msg.blue);
