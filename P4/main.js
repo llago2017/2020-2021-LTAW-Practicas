@@ -85,6 +85,12 @@ app.use('/', express.static(__dirname +'/'));
 //-- El directorio publico contiene ficheros estáticos
 app.use(express.static('public'));
 
+  // Mensaje test
+  electron.ipcMain.handle('test', async (event, msg) => {
+    console.log("Mensaje desde render: " + msg);
+    io.send(msg);
+  });
+
 //------------------- GESTION SOCKETS IO
 //-- Evento: Nueva conexion recibida
 io.on('connect', (socket) => {

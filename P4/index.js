@@ -25,8 +25,11 @@ info6.textContent = process.cwd();
 
 console.log(process.versions)
 btn_test.onclick = () => {
-    display.innerHTML += "TEST! ";
+    const test_msg =  "Hola desde electron! "
+    display.innerHTML += '<p style="color:blue">' + test_msg + '</p>';
     console.log("Botón apretado!");
+    //-- Enviar mensaje al proceso principal
+    electron.ipcRenderer.invoke('test', test_msg);
 }
 
 // CHAT
