@@ -178,7 +178,11 @@ const server = http.createServer((req, res) => {
 
   if (myURL.pathname == '/productos') {
     c_type = "application/json";
-    file = 'json/tienda.json';
+    const DIR_PRODUCTOS = 'json/productos.json';
+    var json_productos = tienda["productos"]
+    let json_salida = JSON.stringify(json_productos);
+    fs.writeFileSync(DIR_PRODUCTOS,json_salida);
+    file = DIR_PRODUCTOS;
   }
 
     //-- Obtener le usuario que ha accedido
