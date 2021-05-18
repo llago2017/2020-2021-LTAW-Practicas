@@ -11,6 +11,8 @@ let win = null;
 //-- ejecuta esta función
 electron.app.on('ready', () => {
     console.log("Evento Ready!");
+    console.log("Enviando IP y puerto");
+    
 
     //-- Crear la ventana principal de nuestra aplicación
     win = new electron.BrowserWindow({
@@ -30,6 +32,9 @@ electron.app.on('ready', () => {
   win.loadFile("index.html");
 
   win.webContents.send('print', "MENSAJE ENVIADO DESDE PROCESO MAIN");
+  
+  win.webContents.send('ip', ip_send);
+  win.webContents.send('qr', path_qr);
 
 });
 
@@ -39,12 +44,24 @@ const socket = require('socket.io');
 const http = require('http');
 const express = require('express');
 const colors = require('colors');
+const ip = require('ip');
 
 // Control de número de usuarios
 var users = 0;
 var dict = [];
 
 const PUERTO = 8080;
+
+//-- Obtengo la direccion IP
+let ip_address = ip.address()
+
+//-- Creo la variable con la direccion IP y el puerto
+let ip_send = "http://" + ip_address + ":" + PUERTO + "/";
+
+const qrcode = require("qrcode");
+var path_qr = 'qr.png';
+qrcode.toFile(path_qr, ip_send);
+
 
 //-- Crear una nueva aplciacion web
 const app = express();
