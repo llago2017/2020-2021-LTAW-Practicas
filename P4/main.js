@@ -28,13 +28,15 @@ electron.app.on('ready', () => {
   // Quito menú por defecto
   win.setMenuBarVisibility(false)
 
+  win.webContents.send('ip', ip_send);
+  win.webContents.send('qr', path_qr);
+
   //-- Cargar interfaz gráfica en HTML
   win.loadFile("index.html");
 
   win.webContents.send('print', "MENSAJE ENVIADO DESDE PROCESO MAIN");
   
-  win.webContents.send('ip', ip_send);
-  win.webContents.send('qr', path_qr);
+  
 
 });
 
