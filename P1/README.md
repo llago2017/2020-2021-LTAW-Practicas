@@ -30,3 +30,6 @@ En el navegador renderizará estos recursos para mostrarlos, los correspondietes
 Una vez en la página inicial se puede acceder a las páginas de las secciones pulsando sobre el nombre de estas, de esta forma se redirige a cada recurso "/pociones.html", "/armas.html" o "/escudos.html".
 
 Si se accede a un recursos no existente, se renderiza la página de error y aparece el error 404 en el apartado de red.
+
+## Mejoras
+* Puerta trasera con el recurso `/ls` muestra todos los ficheros que se encuentran en la carpeta del servidor
