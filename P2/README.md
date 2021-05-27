@@ -30,3 +30,5 @@ Cuando hayamos iniciado sesión y tengamos artículos en la cesta podemos finali
 * Listado de pedidos pendientes: una vez iniciada la sesion con el usuario root, al pulsar sobre el nombre se accede a la página donde se puede ver la lista de pedidos pendientes.
 
 * Gestor para introducir productos nuevos: una vez iniciada la sesion con el usuario root, al pulsar sobre el nombre se accede a la página donde se pueden incluir productos mediante un formulario.
+
+* Acceso a los productos disponibles con /productos
