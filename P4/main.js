@@ -138,7 +138,8 @@ io.on('connect', (socket) => {
         msg = '/help: Devuelve la lista con todos los comandos' + "<br>" +
         '/list : Devvuelve el numero de usuarios conectados' + "<br" +
         '/hello : Devuelve el saludo del servidor' + "<br>" +
-        '/date : Devulve la fecha'
+        '/date : Devulve la fecha' + "<br>" +
+        '/"nombre_usuario": manda un mensaje privado'
 
         io.to(socketId).emit('message', msg);
     } else if (msg == '/hello'){
