@@ -26,7 +26,7 @@ info6.textContent = process.cwd();
 console.log(process.versions)
 btn_test.onclick = () => {
     const test_msg =  "Hola desde electron! "
-    display.innerHTML += '<p style="color:blue">' + test_msg + '</p>';
+    display.innerHTML += '<p class:"mensaje">' + test_msg + '</p>';
     console.log("Botón apretado!");
     //-- Enviar mensaje al proceso principal
     electron.ipcRenderer.invoke('test', test_msg);

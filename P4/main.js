@@ -77,7 +77,7 @@ const io = socket(server);
 //-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
 //-- Definir el punto de entrada principal de mi aplicación web
 app.get('/', (req, res) => {
-  res.send('Bienvenido a mi aplicación Web!!!' + '<p><a href="/client.html">Test</a></p>');
+  res.redirect('/client.html');
 });
 
 //-- Esto es necesario para que el servidor le envíe al cliente la
@@ -105,7 +105,7 @@ io.on('connect', (socket) => {
     welcome_msg = nickname + ' se ha unido al chat!'
     socket.username = nickname;
     dict.push({ name: socket.username, id: socket.id });
-    io.send(welcome_msg);
+    io.emit('server_msg', welcome_msg);
     users += 1;
     win.webContents.send('users', users);
   });
@@ -146,14 +146,14 @@ io.on('connect', (socket) => {
         console.log("Mensaje de saludo".red)
         msg = '¡HOLI!';
         console.log(socketId);
-        io.to(socketId).emit('message', msg);
+        io.to(socketId).emit('server_msg', msg);
     }  else if (msg == '/date'){
         var d = new Date();
         var yy = d.getFullYear();
         var mm = d.getMonth();
         var dd = d.getDate();
         msg = 'Fecha: ' + dd + '/' + mm + '/' + yy;
-        io.to(socketId).emit('message', msg);
+        io.to(socketId).emit('server_msg', msg);
     } else if (msg == '/list') {
       msg = 'Actualmente hay ' + users + " usuarios conectados. <br>"
       console.log(dict)
@@ -181,8 +181,8 @@ io.on('connect', (socket) => {
         console.log("MENSAJE A: " + user2priv.red + " con id: " + priv_id.green)
        // Me quedo solo con el mensaje haciendo un split [0] --> /username
        // [1] --> mensaje 
-        io.to(priv_id).emit('message', socket.username + ": " + new_msg);
-        io.to(socketId).emit('message', socket.username + ": " + new_msg);
+        io.to(priv_id).emit('priv', socket.username + ": " + new_msg);
+        io.to(socketId).emit('priv', socket.username + ": " + new_msg);
     } else {
       //-- Reenviarlo a todos los clientes conectados
           io.send(socket.username + ": " + msg);
