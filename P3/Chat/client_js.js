@@ -74,10 +74,30 @@ socket.on("message", (msg)=>{
       display.innerHTML += '<p id="display_user">' + msg + '</p>'; 
     } else {
       play_sound(sound_msg);
-      display.innerHTML += '<p style="color:blue">' + msg + '</p>'; 
+      display.innerHTML += '<p>' + msg + '</p>'; 
     }
      
   }
+});
+
+socket.on("priv", (msg)=>{
+
+  var user_msg = msg.split(":")[0]
+  if (nickname) {
+    if (user == user_msg) {
+      display.innerHTML += '<p id="priv_user">' + msg + '</p>'; 
+    } else {
+      play_sound(sound_msg);
+      display.innerHTML += '<p style="color:purple;">' + msg + '</p>'; 
+    }
+     
+  }
+});
+
+socket.on("server_msg", (msg)=>{
+
+    play_sound(sound_msg);
+    display.innerHTML += '<p class="server_msg">' + msg + '</p>'; 
 });
 
 //-- Al apretar el botón se envía un mensaje al servidor

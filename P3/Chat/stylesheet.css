@@ -2,6 +2,12 @@
     box-sizing: border-box;
 }
 
+body {
+  background: radial-gradient(rgb(159, 217, 250) 5%, rgb(136, 231, 255) 25%, #cbe5ff 50%);
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
 #user {
         position: absolute;
         top:50%;
@@ -35,7 +41,7 @@ html, input {
     padding: 15px;
     text-align: center;
     width: 100%;
-
+    border-radius: 5px;
     color: #fff;
     font-size: 100%;
     margin-left: auto;
@@ -46,6 +52,7 @@ html, input {
     width: 75%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 15%;
     border: 1px solid rgb(179, 179, 179);
     border-radius: 5px;
     padding: 5px;
@@ -92,11 +99,22 @@ html, input {
 
 .typing {
   display: 'none';
-  color: black;
+  color: rgb(102, 102, 102);
 }
 
 #display_user {
   margin-left: 50%;
-  color: red;
+  color: rgb(88, 88, 88);
   text-align: right;
+}
+
+#priv_user {
+  margin-left: 50%;
+  color: rgb(144, 125, 255);
+  text-align: right;
+}
+
+.server_msg {
+  color:rgb(179, 179, 179);
+  text-align: center;
 }
