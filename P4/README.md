@@ -41,3 +41,12 @@ Cuando se accede al chat cargan los contenidos de la anterior práctica, donde e
  
 * Muestra la URL de conexión mediante un código en la interfaz gráfica, esto se hace con el módulo qr.
 * Muestra más información del sistema.
+* Mostrar los mensajes que envían los usuarios.
+* Botón de pruebas para enviar un mensaje global.
+* Mejora de empaquetar la aplicación: para empaquetar la aplicación se necesita electron-builder que se puede instalar con el siguiente comando `npm i electron-builder --save-dev `. La información correspondiente ya se encuentra en el fichero **package.json** por lo que solo queda ejecutar `run dist.` para que se empaquete la aplicación. Una vez haya finalizado el proceso nos dirigimos a la carpeta dist y podremos ejecutar el fichero.
+
+
+### Fe de erratas
+
+
+La dirección del chat mediante qr no está disponible cuando se ejecuta la aplicación empaquetada.

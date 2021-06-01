@@ -45,7 +45,7 @@ Al iniciar el chat se elige un nombre de usuario para poder acceder y una vez de
 
 
 * Sonidos al iniciar sesión y recibir mensajes.
-* PLos usuarios pueden elegir nickname.
+* Los usuarios pueden elegir nickname.
 * Función "X está escribiendo"
 * Muestra los usuarios conectados (nickname y número)
 * Mensajes directos entre usuarios
