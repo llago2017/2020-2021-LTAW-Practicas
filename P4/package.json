@@ -1,18 +1,37 @@
 {
-    "name": "mi-electron-app",
+    "name": "caht-electron",
     "description": "Estas es mi primera aplicación de escritorio en Electron",
     "version": "0.1.0",
     "main": "main.js",
+    "author": {
+        "name": "Lorena"
+    },
     "scripts": {
-        "start": "electron ."
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder",
+        "postinstall": "electron-builder install-app-deps"
     },
     "dependencies": {
         "colors": "^1.4.0",
-        "electron": "^12.0.7",
+        "electron": "^12.0.9",
         "express": "^4.17.1",
         "ip": "^1.1.5",
         "qr": "^0.2.4",
         "qrcode": "^1.4.4",
-        "socket.io": "^4.1.1"
+        "socket.io": "^4.1.2"
+    },
+
+    "build": {
+        "appId": "Chat-electron",
+        "linux": {
+        "target": [
+            "AppImage"
+        ],
+        "category": "Utility"
     }
+},
+"devDependencies": {
+    "electron": "^12.0.6"
+}
 }
